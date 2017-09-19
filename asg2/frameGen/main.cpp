@@ -36,8 +36,8 @@ int main(void) {
   drawCircle(renderer, center, 50, color);
 
   SDL_RenderPresent(renderer);
-  FrameGenerator frameGen(renderer, window, WINDOW_WIDTH, WINDOW_HEIGHT, 
-    "malloy");
+  FrameGenerator frameGen(renderer, window, WINDOW_WIDTH, WINDOW_HEIGHT,
+    "ctrull");
   frameGen.makeFrame();
 
   SDL_Event event;
