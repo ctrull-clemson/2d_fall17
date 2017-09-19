@@ -1,25 +1,13 @@
 #include <SDL2/SDL.h>
 #include "frameGenerator.h"
+#include "circle.h"
 
 const int WINDOW_WIDTH = 640;
 const int WINDOW_HEIGHT = 480;
 
-void drawCircle(SDL_Renderer* renderer,
-  SDL_Point center, int radius, SDL_Color color) {
-  SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-  for (int w = 0; w < radius * 2; w++) {
-    for (int h = 0; h < radius * 2; h++) {
-      int dx = radius - w; // horizontal offset
-      int dy = radius - h; // vertical offset
-      if ((dx*dx + dy*dy) <= (radius * radius)) {
-        SDL_RenderDrawPoint(renderer, center.x + dx, center.y + dy);
-      }
-    }
-  }
-}
 
 int main(void) {
-  SDL_Renderer *renderer;
+  SDL_Renderer *renderer = NULL;
   SDL_Window *window;
 
   SDL_Init(SDL_INIT_VIDEO);
@@ -33,7 +21,9 @@ int main(void) {
 
   SDL_Point center = {320, 240};
   SDL_Color color = {255,0,0,255};
-  drawCircle(renderer, center, 50, color);
+  Circle myCircle(renderer, 50, center, color);
+  myCircle.draw();
+  //drawCircle(renderer, center, 50, color);
 
   SDL_RenderPresent(renderer);
   FrameGenerator frameGen(renderer, window, WINDOW_WIDTH, WINDOW_HEIGHT,
