@@ -1,9 +1,10 @@
 #include <SDL2/SDL.h>
 #include "frameGenerator.h"
 #include "circle.h"
+#include "pokeball.h"
 
 const int WINDOW_WIDTH = 640;
-const int WINDOW_HEIGHT = 480;
+const int WINDOW_HEIGHT = 640;
 
 
 int main(void) {
@@ -22,7 +23,9 @@ int main(void) {
   SDL_Point center = {320, 240};
   SDL_Color color = {255,0,0,255};
   Circle myCircle(renderer, 50, center, color);
-  myCircle.draw();
+  //myCircle.draw();
+  Pokeball myPokeball(renderer, {WINDOW_WIDTH/2, WINDOW_HEIGHT/2}, 0);
+  myPokeball.draw();
   //drawCircle(renderer, center, 50, color);
 
   SDL_RenderPresent(renderer);

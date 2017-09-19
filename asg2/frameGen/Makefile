@@ -8,6 +8,7 @@ LDFLAGS = `sdl2-config --libs` -lm
 OBJS = \
   frameGenerator.o \
   circle.o \
+	pokeball.o \
   main.o
 
 EXEC = run
