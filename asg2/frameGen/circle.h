@@ -14,5 +14,3 @@ private:
   const SDL_Color CIRCLE_COLOR;
   Circle(const Circle&);
 };
-
-//FrameGenerator& operator=(const FrameGenerator&);

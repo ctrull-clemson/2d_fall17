@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
+#include <cstring>
 #include "pokeball.h"
 #include "circle.h"
 #include "math.h"
@@ -50,4 +51,17 @@ void Pokeball::draw()
 
   Circle buttonInner2(renderer, 22, CENTER, {255, 255, 255, 255});
   buttonInner2.draw();
+}
+
+int Pokeball::getPokeballType() const{
+  return BALL_ID;
+}
+
+std::ostream& operator<<(std::ostream& out, const Pokeball p) {
+  int id = p.getPokeballType();
+  if (id == 0)
+  {
+    return out << "Pokeball";
+  }
+  return out << "Ultraball";
 }

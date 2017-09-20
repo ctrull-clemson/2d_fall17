@@ -1,0 +1,30 @@
+Name:
+  Christian Trull
+
+Clemson Email Address:
+  ctrull@g.clemson.edu
+
+Project no:
+  #2
+
+Project due date:
+  September 21, 2017
+
+Project description:
+  Create an image using SDL primitives, and overload at least one operator.
+
+The easiest part of this project:
+  Adding to the provided code to use the frame generator. After experimenting some
+  with the different draw functions it was not to difficult to manipulate them as
+  I needed. Drawing the black horizontal lines took a little work to make sure
+  they didn't exceed the outer circle that was already drawn.
+
+
+Problems that I had in completing this project:
+  Getting the overload operator to work. I was not putting the overload prototype
+  in my pokeball.h file so I was getting errors related to << for my class not
+  being defined.
+
+  I also did not have time to implement drawing different types of pokeballs
+  like I had wanted to. That was the main purpose of the BALL_ID in the
+  Pokeball class.

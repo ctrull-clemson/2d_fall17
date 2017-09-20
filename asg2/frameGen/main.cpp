@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <iostream>
 #include "frameGenerator.h"
 #include "circle.h"
 #include "pokeball.h"
@@ -20,8 +21,11 @@ int main(void) {
   SDL_RenderClear(renderer);
   SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 
+  // My code to create an object of type Pokeball, and draws it.
   Pokeball myPokeball(renderer, {WINDOW_WIDTH/2, WINDOW_HEIGHT/2}, 0);
   myPokeball.draw();
+  std::cout << myPokeball;
+  std::cout << std::endl;
 
   SDL_RenderPresent(renderer);
   FrameGenerator frameGen(renderer, window, WINDOW_WIDTH, WINDOW_HEIGHT,
