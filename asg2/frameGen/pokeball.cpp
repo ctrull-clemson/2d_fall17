@@ -37,7 +37,17 @@ void Pokeball::draw()
   }
 
   // Center, circular, outer button ring
-  
+  Circle buttonOuter1(renderer, 65, CENTER, {0, 0, 0, 255});
+  buttonOuter1.draw();
 
+  // Center, circular, outer button ring
+  Circle buttonOuter2(renderer, 50, CENTER, {255, 255, 255, 255});
+  buttonOuter2.draw();
 
+  // Center, circular, inside button ring
+  Circle buttonInner1(renderer, 26, CENTER, {54, 54, 54, 128});
+  buttonInner1.draw();
+
+  Circle buttonInner2(renderer, 22, CENTER, {255, 255, 255, 255});
+  buttonInner2.draw();
 }
