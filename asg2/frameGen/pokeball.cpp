@@ -3,10 +3,10 @@
 #include <iomanip>
 #include "pokeball.h"
 #include "circle.h"
+#include "math.h"
 
 
-Pokeball::
-Pokeball(SDL_Renderer* rend, SDL_Point p, int id) :
+Pokeball::Pokeball(SDL_Renderer* rend, SDL_Point p, int id) :
   renderer(rend),
   CENTER( p ),
   BALL_ID (id)
@@ -25,4 +25,19 @@ void Pokeball::draw()
   // Draws the top red half of the pokeball
   Circle redSemiCircle(renderer, 250, CENTER, {255,0,0,255});
   redSemiCircle.drawHalf();
+
+  // Straight line across the middle of the pokeball
+  SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255 );
+  int dx = 0;
+  for (int i = 0; i <= 8; i++)
+  {
+    dx = sqrt(((256 * 256) - (i * i)));
+    SDL_RenderDrawLine(renderer, (CENTER.x - dx), CENTER.y + i, (CENTER.x + dx), CENTER.y + i);
+    SDL_RenderDrawLine(renderer, (CENTER.x - dx), CENTER.y - i, (CENTER.x + dx), CENTER.y - i);
+  }
+
+  // Center, circular, outer button ring
+  
+
+
 }

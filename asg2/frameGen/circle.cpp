@@ -3,8 +3,7 @@
 #include <iomanip>
 #include "circle.h"
 
-Circle::
-Circle(SDL_Renderer* rend,int r, SDL_Point p, SDL_Color color) :
+Circle::Circle(SDL_Renderer* rend,int r, SDL_Point p, SDL_Color color) :
   renderer(rend),
   RADIUS( r ),
   CENTER( p ),
@@ -26,7 +25,6 @@ void Circle::draw()
     }
   }
 }
-
 
 void Circle::drawHalf()
 {
