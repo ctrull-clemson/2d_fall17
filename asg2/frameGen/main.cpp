@@ -20,13 +20,8 @@ int main(void) {
   SDL_RenderClear(renderer);
   SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 
-  SDL_Point center = {320, 240};
-  SDL_Color color = {255,0,0,255};
-  Circle myCircle(renderer, 50, center, color);
-  //myCircle.draw();
   Pokeball myPokeball(renderer, {WINDOW_WIDTH/2, WINDOW_HEIGHT/2}, 0);
   myPokeball.draw();
-  //drawCircle(renderer, center, 50, color);
 
   SDL_RenderPresent(renderer);
   FrameGenerator frameGen(renderer, window, WINDOW_WIDTH, WINDOW_HEIGHT,

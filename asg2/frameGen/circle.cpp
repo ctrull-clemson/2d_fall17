@@ -26,3 +26,20 @@ void Circle::draw()
     }
   }
 }
+
+
+void Circle::drawHalf()
+{
+  SDL_SetRenderDrawColor(renderer, CIRCLE_COLOR.r, CIRCLE_COLOR.g, CIRCLE_COLOR.b, CIRCLE_COLOR.a);
+  for (int w = 0; w < RADIUS * 2; w++)
+  {
+    for (int h = RADIUS; h < RADIUS * 2; h++)
+    {
+      int dx = RADIUS - w;
+      int dy = RADIUS - h;
+      if ((dx*dx + dy*dy) <= (RADIUS * RADIUS)) {
+        SDL_RenderDrawPoint(renderer, CENTER.x + dx, CENTER.y + dy);
+      }
+    }
+  }
+}

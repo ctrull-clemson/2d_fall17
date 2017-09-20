@@ -21,4 +21,8 @@ void Pokeball::draw()
   // Secondary circle to color bottom of pokeball
   Circle secondCircle(renderer, 250, CENTER, {255,255,255,255});
   secondCircle.draw();
+
+  // Draws the top red half of the pokeball
+  Circle redSemiCircle(renderer, 250, CENTER, {255,0,0,255});
+  redSemiCircle.drawHalf();
 }
