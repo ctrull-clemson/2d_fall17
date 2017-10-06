@@ -30,14 +30,23 @@ ImageFactory::~ImageFactory() {
   }
 
   // Free multi-image containers
-  // std::map<std::string, std::vector<SDL_Surface*> > multiSurfaces;
+  /*
+  std::map<std::string, std::vector<SDL_Surface*> >::iterator ms_ptr = multiSurfaces.begin();
+  while(ms_ptr != multiSurfaces.end())
+  {
+      for(unsigned int i = 0; i < ms_ptr->second.size(); ++i)
+      {
+          SDL_FreeSurface(ms_ptr->second[i]);
+      }
+  } */
 
-  //std::map<std::string, std::vector<SDL_Surface*> >::iterator ms_ptr = multiSurfaces.begin();
+  //Original code to free multiSurfaces
   for ( auto surfaces : multiSurfaces ) {
     for (unsigned int i = 0; i < surfaces.second.size(); ++i) {
       SDL_FreeSurface( surfaces.second[i] );
     }
   }
+
   for ( auto textures : multiTextures ) {
     for (unsigned int i = 0; i < textures.second.size(); ++i) {
       SDL_DestroyTexture( textures.second[i] );
