@@ -8,14 +8,27 @@
 class ImageFactory {
 public:
 
-  static ImageFactory* getInstance();
-  ~ImageFactory();
+  static ImageFactory& getInstance();
 
   Image* getImage(const std::string&);
   std::vector<Image*> getImages(const std::string&);
 
 private:
-  static ImageFactory* instance;
+
+  ImageFactory() :
+    gdata( Gamedata::getInstance() ),
+    surfaces(),
+    textures(),
+    images(),
+    multiSurfaces(),
+    multiTextures(),
+    multiImages()
+  {} // Prevent declaration
+
+  ImageFactory(const ImageFactory&); // Prevent construction by copying
+  ImageFactory& operator=(const ImageFactory&); // Prevent assignment
+  ~ImageFactory(); // Prevent unwanted destruction
+
   const Gamedata& gdata;
 
   std::map<std::string, SDL_Surface*> surfaces;
@@ -26,15 +39,4 @@ private:
   std::map<std::string, std::vector<SDL_Texture*> > multiTextures;
   std::map<std::string, std::vector<Image*> > multiImages;
 
-  ImageFactory() : 
-    gdata( Gamedata::getInstance() ), 
-    surfaces(),
-    textures(),
-    images(),
-    multiSurfaces(),
-    multiTextures(),
-    multiImages()
-  {}
-  ImageFactory(const ImageFactory&);
-  ImageFactory& operator=(const ImageFactory&);
 };
