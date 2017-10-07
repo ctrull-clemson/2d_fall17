@@ -1,5 +1,6 @@
 #include <string>
 #include <sstream>
+#include "clock.h"
 #include "viewport.h"
 #include "ioMod.h"
 
@@ -32,7 +33,7 @@ void Viewport::draw() const {
 
 void Viewport::write() const {
   std::stringstream strm;
-  strm << "FPS: ";
+  strm << "FPS: " << Clock::getInstance().getFps();
 
   IOmod::getInstance().
     writeText(strm.str(), 20, 60);
