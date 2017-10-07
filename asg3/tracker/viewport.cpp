@@ -36,12 +36,12 @@ void Viewport::write() const {
   strm << "FPS: " << Clock::getInstance().getFps();
 
   IOmod::getInstance().
-    writeText(strm.str(), 20, 60);
+    writeText(strm.str(), 20, 60, {0,0,255,255});
 
   strm.str("");
   strm << "Christian Trull";
   IOmod::getInstance().
-    writeText(strm.str(), 20, 450);
+    writeText(strm.str(), 20, 450, {255,0,255,255});
 }
 
 void Viewport::update() {

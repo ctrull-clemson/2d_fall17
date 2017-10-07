@@ -8,12 +8,12 @@ IOmod& IOmod::getInstance() {
   return instance;
 }
 
-IOmod::~IOmod() { 
+IOmod::~IOmod() {
   TTF_CloseFont(font);
-  TTF_Quit(); 
+  TTF_Quit();
 }
 
-IOmod::IOmod() : 
+IOmod::IOmod() :
   init(TTF_Init()),
   renderer( RenderContext::getInstance()->getRenderer() ),
   font(TTF_OpenFont(Gamedata::getInstance().getXmlStr("font/file").c_str(),
@@ -49,8 +49,24 @@ SDL_Surface* IOmod::readSurface(const std::string& filename) {
 }
 
 void IOmod::writeText(const std::string& msg, int x, int y) const {
-  SDL_Surface* surface = 
+  SDL_Surface* surface =
     TTF_RenderText_Solid(font, msg.c_str(), textColor);
+
+  SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+  int textWidth = surface->w;
+  int textHeight = surface->h;
+  SDL_FreeSurface(surface);
+  SDL_Rect dst = {x, y, textWidth, textHeight};
+
+  SDL_RenderCopy(renderer, texture, NULL, &dst);
+  SDL_DestroyTexture(texture);
+}
+
+// Colorized write text
+void IOmod::writeText(const std::string& msg, int x, int y, SDL_Color clr) const {
+  SDL_Surface* surface =
+    TTF_RenderText_Solid(font, msg.c_str(), clr);
 
   SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
 
