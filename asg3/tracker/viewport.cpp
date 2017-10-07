@@ -1,3 +1,4 @@
+#include <string>
 #include <sstream>
 #include "viewport.h"
 #include "ioMod.h"
@@ -7,26 +8,39 @@ Viewport& Viewport::getInstance() {
   return viewport;
 }
 
-Viewport::Viewport() : 
+Viewport::Viewport() :
   gdata(Gamedata::getInstance()),
   position(0, 0),
   worldWidth(gdata.getXmlInt("world/width")),
   worldHeight(gdata.getXmlInt("world/height")),
-  viewWidth(gdata.getXmlInt("view/width")), 
+  viewWidth(gdata.getXmlInt("view/width")),
   viewHeight(gdata.getXmlInt("view/height")),
   objWidth(0), objHeight(0),
-  objectToTrack(NULL) 
+  objectToTrack(NULL)
 {}
 
-void Viewport::setObjectToTrack(const Drawable *obj) { 
-  objectToTrack = obj; 
+void Viewport::setObjectToTrack(const Drawable *obj) {
+  objectToTrack = obj;
   objWidth = objectToTrack->getScaledWidth();
   objHeight = objectToTrack->getScaledHeight();
 }
 
 void Viewport::draw() const {
   IOmod::getInstance().
-    writeText("Tracking: "+objectToTrack->getName(), 30, 30);
+    writeText("Tracking: "+objectToTrack->getName(), 20, 30);
+}
+
+void Viewport::write() const {
+  std::stringstream strm;
+  strm << "FPS: ";
+
+  IOmod::getInstance().
+    writeText(strm.str(), 20, 60);
+
+  strm.str("");
+  strm << "Christian Trull";
+  IOmod::getInstance().
+    writeText(strm.str(), 20, 450);
 }
 
 void Viewport::update() {

@@ -7,6 +7,7 @@ class Viewport {
 public:
   static Viewport& getInstance();
   void draw() const;
+  void write() const;
   void update();
 
   Vector2f getPosition() const { return position; }
@@ -16,7 +17,7 @@ public:
   void  setY(float y) { position[1] = y; }
 
   void setObjectToTrack(const Drawable *obj);
-  const Drawable* getObjectToTrack() const { return objectToTrack; } 
+  const Drawable* getObjectToTrack() const { return objectToTrack; }
 
 private:
   const Gamedata& gdata;
@@ -27,7 +28,7 @@ private:
   int viewHeight;
   int objWidth;
   int objHeight;
-  
+
   const Drawable *objectToTrack;
 
   Viewport();
