@@ -38,6 +38,7 @@ ImageFactory::~ImageFactory() {
       {
           SDL_FreeSurface(ms_ptr->second[i]);
       }
+      ++ms_ptr; // you forgot this you idiot.......
   } */
 
   //Original code to free multiSurfaces
