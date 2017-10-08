@@ -1,6 +1,6 @@
 <?xml version = "1.0"?>
 <GameData>
-<!-- screenTitle is also used to identify you and your animation. 
+<!-- screenTitle is also used to identify you and your animation.
      So make sure to include your name as part of the screenTitle -->
 <title>The Tracker Framework</title>
 <maxStringSize>50</maxStringSize>
@@ -47,6 +47,30 @@
   <speedY>200</speedY>
   <transparency>false</transparency>
 </SpinningStar>
+
+<DragonLeft>
+  <file>assets/dragon_left.png</file>
+  <startLoc x="50" y="140"/>
+  <frames>4</frames>
+  <imageWidth>96</imageWidth>
+  <imageHeight>100</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>200</speedX>
+  <speedY>200</speedY>
+  <transparency>false</transparency>
+</DragonLeft>
+
+<DragonRight>
+  <file>assets/dragon_right.png</file>
+  <startLoc x="50" y="140"/>
+  <frames>4</frames>
+  <imageWidth>96</imageWidth>
+  <imageHeight>100</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>200</speedX>
+  <speedY>200</speedY>
+  <transparency>false</transparency>
+</DragonRight>
 
 <YellowStar>
   <file>assets/yellowstar32.png</file>
