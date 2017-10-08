@@ -25,8 +25,8 @@ private:
     multiImages()
   {} // Prevent declaration
 
-  ImageFactory(const ImageFactory&); // Prevent construction by copying
-  ImageFactory& operator=(const ImageFactory&); // Prevent assignment
+  ImageFactory(const ImageFactory&) = delete; // Prevent construction by copying
+  ImageFactory& operator=(const ImageFactory&) = delete; // Prevent assignment
   ~ImageFactory(); // Prevent unwanted destruction
 
   const Gamedata& gdata;
