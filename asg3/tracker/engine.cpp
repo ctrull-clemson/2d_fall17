@@ -13,6 +13,7 @@
 Engine::~Engine() {
   delete star;
   delete spinningStar;
+  delete dragonleft;
   std::cout << "Terminating program" << std::endl;
 }
 
@@ -25,6 +26,7 @@ Engine::Engine() :
   viewport( Viewport::getInstance() ),
   star(new Sprite("YellowStar")),
   spinningStar(new MultiSprite("SpinningStar")),
+  dragonleft(new MultiSprite("DragonLeft")),
   currentSprite(0),
   makeVideo( false )
 {
@@ -38,16 +40,18 @@ void Engine::draw() const {
 
   star->draw();
   spinningStar->draw();
+  dragonleft->draw();
 
   viewport.draw();
   viewport.write();
-  
+
   SDL_RenderPresent(renderer);
 }
 
 void Engine::update(Uint32 ticks) {
   star->update(ticks);
   spinningStar->update(ticks);
+  dragonleft->update(ticks);
   world.update();
   viewport.update(); // always update viewport last
 }
@@ -56,7 +60,7 @@ void Engine::switchSprite(){
   ++currentSprite;
   currentSprite = currentSprite % 2;
   if ( currentSprite ) {
-    Viewport::getInstance().setObjectToTrack(spinningStar);
+    Viewport::getInstance().setObjectToTrack(dragonleft);
   }
   else {
     Viewport::getInstance().setObjectToTrack(star);
