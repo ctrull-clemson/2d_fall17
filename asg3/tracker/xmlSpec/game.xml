@@ -9,20 +9,20 @@
 <period>17</period>
 
 <maxFrames>300</maxFrames>
-<username>malloy</username>
+<username>ctrull</username>
 
 <view>
-  <width>854</width>
-  <height>480</height>
+  <width>890</width>
+  <height>500</height>
 </view>
 
 <world>
-  <width>2000</width>
-  <height>800</height>
+  <width>1920</width>
+  <height>1080</height>
 </world>
 
 <back>
-  <file>assets/checkerboard.bmp</file>
+  <file>assets/rock_bg.png</file>
   <factor>1</factor>
   <transparency>false</transparency>
 </back>
@@ -55,8 +55,8 @@
   <imageWidth>96</imageWidth>
   <imageHeight>100</imageHeight>
   <frameInterval>50</frameInterval>
-  <speedX>200</speedX>
-  <speedY>200</speedY>
+  <speedX>400</speedX>
+  <speedY>125</speedY>
   <transparency>false</transparency>
 </DragonLeft>
 
