@@ -8,7 +8,6 @@ public:
   static Clock& getInstance();
   unsigned int getTicks() const;
 
-  int getFps() const;
 private:
   friend class Engine;
 
@@ -30,6 +29,7 @@ private:
   void incrFrame();
   void toggleSloMo();
 
+  int getFps() const;
   bool isStarted() const { return started; }
   bool isPaused() const  { return paused;  }
   unsigned int getFrames() const  { return frames;  }

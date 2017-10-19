@@ -45,6 +45,13 @@ void Engine::draw() const {
   viewport.draw();
   viewport.write();
 
+  // Print out FPS
+  std::stringstream strm;
+  strm << "FPS: " << Clock::getInstance().getFps();
+
+  IOmod::getInstance().
+    writeText(strm.str(), 20, 60, {0,0,255,255});
+
   SDL_RenderPresent(renderer);
 }
 

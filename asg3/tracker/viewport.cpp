@@ -33,10 +33,6 @@ void Viewport::draw() const {
 
 void Viewport::write() const {
   std::stringstream strm;
-  strm << "FPS: " << Clock::getInstance().getFps();
-
-  IOmod::getInstance().
-    writeText(strm.str(), 20, 60, {0,0,255,255});
 
   strm.str("");
   strm << "Christian Trull";
