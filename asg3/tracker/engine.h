@@ -24,7 +24,7 @@ private:
 
   Drawable* star;
   Drawable* spinningStar;
-  Drawable* dragonleft;
+  Drawable* dragon;
   int currentSprite;
 
   bool makeVideo;

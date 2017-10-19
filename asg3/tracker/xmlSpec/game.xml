@@ -12,8 +12,8 @@
 <username>ctrull</username>
 
 <view>
-  <width>890</width>
-  <height>500</height>
+  <width>854</width>
+  <height>480</height>
 </view>
 
 <world>
@@ -48,7 +48,7 @@
   <transparency>false</transparency>
 </SpinningStar>
 
-<DragonLeft>
+<Dragon>
   <file>assets/dragon_left.png</file>
   <startLoc x="50" y="140"/>
   <frames>4</frames>
@@ -58,7 +58,7 @@
   <speedX>400</speedX>
   <speedY>125</speedY>
   <transparency>false</transparency>
-</DragonLeft>
+</Dragon>
 
 <DragonRight>
   <file>assets/dragon_right.png</file>
