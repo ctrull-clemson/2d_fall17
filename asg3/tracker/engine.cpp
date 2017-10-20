@@ -5,6 +5,7 @@
 #include <random>
 #include <iomanip>
 #include "sprite.h"
+#include "twowaymultisprite.h"
 #include "multisprite.h"
 #include "gamedata.h"
 #include "engine.h"
@@ -26,7 +27,7 @@ Engine::Engine() :
   viewport( Viewport::getInstance() ),
   star(new Sprite("YellowStar")),
   spinningStar(new MultiSprite("SpinningStar")),
-  dragon(new MultiSprite("Dragon")),
+  dragon(new TwoWayMultiSprite("Dragon")),
   currentSprite(0),
   makeVideo( false )
 {
