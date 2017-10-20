@@ -1,13 +1,26 @@
 Name:
+  Christian Trull
+
+Course:
+  CPSC 4160 2D Game Design
 
 Clemson Email Address:
+  ctrull@g.clemson.edu
 
 Project no:
+  #3
 
 Project due date:
+  Friday October 20, 2017
 
 Project description:
+  Implemented two way multiframe sprites, paralax scrolling, converted
+  singletons, converted while/ranged for loops.
 
 The easiest part of this project:
+  Most of the project was fairly straight forward. Converting loops and
+  singleton patterns took almost no time.
 
 Problems that I had in completing this project:
+  I was having issues with paralax scrolling because I forgot to make
+  sure that the factor that was being read in was for the right background.

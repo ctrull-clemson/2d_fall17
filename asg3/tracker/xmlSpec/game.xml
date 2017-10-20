@@ -2,13 +2,13 @@
 <GameData>
 <!-- screenTitle is also used to identify you and your animation.
      So make sure to include your name as part of the screenTitle -->
-<title>The Tracker Framework</title>
+<title>Wild Wild West</title>
 <maxStringSize>50</maxStringSize>
 
 <frameCapOn>true</frameCapOn>
 <period>17</period>
 
-<maxFrames>300</maxFrames>
+<maxFrames>1200</maxFrames>
 <username>ctrull</username>
 
 <view>
