@@ -22,9 +22,7 @@ private:
   World world;
   Viewport& viewport;
 
-  Drawable* star;
-  Drawable* spinningStar;
-  Drawable* dragon;
+  std::vector<Drawable *> sprites;
   int currentSprite;
 
   bool makeVideo;

@@ -12,9 +12,11 @@
 #include "frameGenerator.h"
 
 Engine::~Engine() {
-  delete star;
-  delete spinningStar;
-  delete dragon;
+  for(auto sprite : sprites)
+  {
+    delete sprite;
+  }
+
   std::cout << "Terminating program" << std::endl;
 }
 
@@ -25,23 +27,28 @@ Engine::Engine() :
   renderer( rc->getRenderer() ),
   world("back", Gamedata::getInstance().getXmlInt("back/factor") ),
   viewport( Viewport::getInstance() ),
-  star(new Sprite("YellowStar")),
-  spinningStar(new MultiSprite("SpinningStar")),
-  dragon(new TwoWayMultiSprite("Dragon")),
+  sprites(std::vector<Drawable *> {}),
   currentSprite(0),
   makeVideo( false )
 {
-
-  Viewport::getInstance().setObjectToTrack(star);
+  sprites.push_back(new TwoWayMultiSprite("Dragon"));
+  sprites.push_back(new Sprite("YellowStar"));
+  Viewport::getInstance().setObjectToTrack(sprites[0]);
   std::cout << "Loading complete" << std::endl;
 }
 
 void Engine::draw() const {
   world.draw();
 
+  for(auto sprite : sprites)
+  {
+    sprite->draw();
+  }
+  /*
   star->draw();
   spinningStar->draw();
   dragon->draw();
+  */
 
   viewport.draw();
   viewport.write();
@@ -57,22 +64,20 @@ void Engine::draw() const {
 }
 
 void Engine::update(Uint32 ticks) {
-  star->update(ticks);
-  spinningStar->update(ticks);
-  dragon->update(ticks);
+  for(auto sprite : sprites)
+  {
+    sprite->update(ticks);
+  }
+
   world.update();
   viewport.update(); // always update viewport last
 }
 
 void Engine::switchSprite(){
   ++currentSprite;
-  currentSprite = currentSprite % 2;
-  if ( currentSprite ) {
-    Viewport::getInstance().setObjectToTrack(dragon);
-  }
-  else {
-    Viewport::getInstance().setObjectToTrack(star);
-  }
+  currentSprite = currentSprite % sprites.size();
+
+  Viewport::getInstance().setObjectToTrack(sprites[currentSprite]);
 }
 
 void Engine::play() {
