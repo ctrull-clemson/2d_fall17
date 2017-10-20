@@ -31,8 +31,8 @@ Engine::Engine() :
   currentSprite(0),
   makeVideo( false )
 {
+  sprites.push_back(new Sprite("ShineSprite"));
   sprites.push_back(new TwoWayMultiSprite("Dragon"));
-  //sprites.push_back(new Sprite("YellowStar"));
   sprites.push_back(new TwoWayMultiSprite("Horse"));
   Viewport::getInstance().setObjectToTrack(sprites[0]);
   std::cout << "Loading complete" << std::endl;

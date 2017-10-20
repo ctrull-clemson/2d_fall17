@@ -1,3 +1,5 @@
 rock 4: https://opengameart.org/sites/default/files/rock_4.png
 rock_sprites: https://s-media-cache-ak0.pinimg.com/originals/dd/17/9f/dd179f78e23f8c1cdb4318d17d2d1137.jpg
 black_dragon: https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjXi7TImuDWAhXLZiYKHYOJB0UQjhwIBQ&url=http%3A%2F%2Fwww.gdunlimited.net%2Fforums%2Ftopic%2F9493-dragon-sprites%2F&psig=AOvVaw33czvpLjIX1Bnhq2jzlDyY&ust=1507523878015078
+shine_sprite: https://orig00.deviantart.net/780d/f/2014/029/b/3/paper_shine_sprite_by_pkgam-d749d95.png
+horses: http://spritedatabase.net/file/20905
