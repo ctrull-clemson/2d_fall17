@@ -19,7 +19,8 @@ private:
   Clock& clock;
 
   SDL_Renderer * const renderer;
-  World world;
+  World mountains;
+  World road;
   Viewport& viewport;
 
   std::vector<Drawable *> sprites;

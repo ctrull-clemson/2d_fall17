@@ -13,7 +13,7 @@
 
 <view>
   <width>854</width>
-  <height>480</height>
+  <height>500</height>
 </view>
 
 <world>
@@ -23,9 +23,15 @@
 
 <back>
   <file>assets/rock_bg.png</file>
-  <factor>1</factor>
+  <factor>2</factor>
   <transparency>false</transparency>
 </back>
+
+<road>
+  <file>assets/dirt_road.png</file>
+  <factor>1</factor>
+  <transparency>true</transparency>
+</road>
 
 <font name="font">
   <file>fonts/arial.ttf</file>
@@ -35,18 +41,6 @@
   <blue>0</blue>
   <alpha>0</alpha>
 </font>
-
-<SpinningStar>
-  <file>assets/spinstar.png</file>
-  <startLoc x="50" y="140"/>
-  <frames>4</frames>
-  <imageWidth>32</imageWidth>
-  <imageHeight>32</imageHeight>
-  <frameInterval>50</frameInterval>
-  <speedX>200</speedX>
-  <speedY>200</speedY>
-  <transparency>false</transparency>
-</SpinningStar>
 
 <Dragon>
   <file>assets/dragon_left.png</file>
@@ -79,7 +73,7 @@
   <imageWidth>156</imageWidth>
   <imageHeight>95</imageHeight>
   <frameInterval>50</frameInterval>
-  <speedX>450</speedX>
+  <speedX>500</speedX>
   <speedY>0</speedY>
   <transparency>false</transparency>
 </Horse>
@@ -91,15 +85,15 @@
   <imageWidth>156</imageWidth>
   <imageHeight>95</imageHeight>
   <frameInterval>50</frameInterval>
-  <speedX>450</speedX>
+  <speedX>500</speedX>
   <speedY>0</speedY>
   <transparency>false</transparency>
 </HorseRight>
 
 <ShineSprite>
   <file>assets/shine_sprite.png</file>
-  <startLoc x="1200" y="50"/>
-  <speedX>300</speedX>
+  <startLoc x="800" y="125"/>
+  <speedX>350</speedX>
   <speedY>0</speedY>
   <transparency>false</transparency>
 </ShineSprite>

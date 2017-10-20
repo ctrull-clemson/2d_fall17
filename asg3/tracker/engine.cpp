@@ -25,7 +25,8 @@ Engine::Engine() :
   io( IOmod::getInstance() ),
   clock( Clock::getInstance() ),
   renderer( rc->getRenderer() ),
-  world("back", Gamedata::getInstance().getXmlInt("back/factor") ),
+  mountains("back", Gamedata::getInstance().getXmlInt("back/factor") ),
+  road("road", Gamedata::getInstance().getXmlInt("road/factor") ),
   viewport( Viewport::getInstance() ),
   sprites(std::vector<Drawable *> {}),
   currentSprite(0),
@@ -39,7 +40,8 @@ Engine::Engine() :
 }
 
 void Engine::draw() const {
-  world.draw();
+  mountains.draw();
+  road.draw();
 
   for(auto sprite : sprites)
   {
@@ -65,7 +67,8 @@ void Engine::update(Uint32 ticks) {
     sprite->update(ticks);
   }
 
-  world.update();
+  mountains.update();
+  road.update();
   viewport.update(); // always update viewport last
 }
 
