@@ -32,7 +32,8 @@ Engine::Engine() :
   makeVideo( false )
 {
   sprites.push_back(new TwoWayMultiSprite("Dragon"));
-  sprites.push_back(new Sprite("YellowStar"));
+  //sprites.push_back(new Sprite("YellowStar"));
+  sprites.push_back(new TwoWayMultiSprite("Horse"));
   Viewport::getInstance().setObjectToTrack(sprites[0]);
   std::cout << "Loading complete" << std::endl;
 }
@@ -44,11 +45,6 @@ void Engine::draw() const {
   {
     sprite->draw();
   }
-  /*
-  star->draw();
-  spinningStar->draw();
-  dragon->draw();
-  */
 
   viewport.draw();
   viewport.write();
