@@ -34,8 +34,8 @@ Engine::Engine() :
   makeVideo( false )
 {
   sprites.push_back(new Sprite("ShineSprite"));
-  sprites.push_back(new TwoWayMultiSprite("Dragon"));
-  sprites.push_back(new TwoWayMultiSprite("Horse"));
+  //sprites.push_back(new TwoWayMultiSprite("Dragon"));
+  //sprites.push_back(new TwoWayMultiSprite("Horse"));
   Viewport::getInstance().setObjectToTrack(sprites[0]);
   std::cout << "Loading complete" << std::endl;
 }
@@ -52,14 +52,12 @@ void Engine::draw() const {
   viewport.draw();
   viewport.write();
 
-  // Print out FPS
-  std::stringstream strm;
-  strm << "FPS: " << Clock::getInstance().getFps();
-
-  IOmod::getInstance().
-    writeText(strm.str(), 20, 60, {0,0,255,255});
-
   hud.draw();
+  unsigned int timeCheck = clock.getTicks();
+  if(timeCheck >= 3000 && timeCheck <= 3050)
+  {
+    hud.setDrawBool(false);
+  }
 
   SDL_RenderPresent(renderer);
 }

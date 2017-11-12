@@ -12,13 +12,13 @@
 <username>ctrull</username>
 
 <view>
-  <width>1600</width>
-  <height>1600</height>
+  <width>854</width>
+  <height>500</height>
 </view>
 
 <world>
-  <width>1600</width>
-  <height>1600</height>
+  <width>1920</width>
+  <height>1080</height>
 </world>
 
 <back>

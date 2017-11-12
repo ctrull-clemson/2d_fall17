@@ -13,21 +13,30 @@ HUD::~HUD() {
 }
 
 HUD::HUD() :
-  movement("w,a,s,d to move"),
-  shooting("space to shot (not yet implemented)"),
-  renderer( RenderContext::getInstance()->getRenderer() )
+  movement("- w,a,s,d to move"),
+  shooting("- space to shot"),
+  renderer( RenderContext::getInstance()->getRenderer() ),
+  io(IOmod::getInstance())
 {}
 
 void HUD::draw(){
-  SDL_SetRenderDrawColor( renderer, 0, 0, 255, 255 );
+  if(drawHUD)
+  {
+    SDL_SetRenderDrawColor( renderer, 0, 0, 0, 255 );
+    SDL_Rect r({0,0,200,92});
+    SDL_RenderFillRect( renderer, &r );
 
-  SDL_Rect r;
-  r.x = 50;
-  r.y = 50;
-  r.w = 150;
-  r.h = 200;
+    SDL_SetRenderDrawColor( renderer, 220, 220, 220, 255 );
+    SDL_Rect r2({4,4,192,84});
+    SDL_RenderFillRect( renderer, &r2 );
 
-  SDL_RenderFillRect( renderer, &r );
+    io.writeText("HUD:", 8, 5);
+    io.writeText(movement, 8, 30);
+    io.writeText(shooting, 8, 55);
+  }
+}
 
-  SDL_RenderPresent(renderer);
+void HUD::setDrawBool(bool changeTo)
+{
+  drawHUD = changeTo;
 }
