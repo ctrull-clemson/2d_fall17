@@ -143,9 +143,6 @@ void Engine::play() {
         if ( keystate[SDL_SCANCODE_F1] ) {
           hud.setDrawBool(!hud.getDrawBool());
         }
-        if ( keystate[SDL_SCANCODE_M] ) {
-          currentStrategy = (1 + currentStrategy) % strategies.size();
-        }
         if (keystate[SDL_SCANCODE_F4] && !makeVideo) {
           std::cout << "Initiating frame capture" << std::endl;
           makeVideo = true;

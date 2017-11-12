@@ -100,7 +100,6 @@
   <transparency>false</transparency>
 </ShineSprite>
 
-
 <Dog>
   <file>assets/dog_left.png</file>
   <startLoc x="50" y="900"/>

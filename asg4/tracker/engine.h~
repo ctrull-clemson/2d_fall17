@@ -35,7 +35,7 @@ private:
   bool collision;
   bool makeVideo;
 
-  Player* myPlayer;
+  Player myPlayer;
 
   void draw() const;
   void update(Uint32);
