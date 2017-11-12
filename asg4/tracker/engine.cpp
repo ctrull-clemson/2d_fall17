@@ -54,7 +54,7 @@ void Engine::draw() const {
 
   hud.draw();
   unsigned int timeCheck = clock.getTicks();
-  if(timeCheck >= 3000 && timeCheck <= 3050)
+  if(timeCheck >= 3000 && timeCheck <= 3020 && !hud.getAlreadyBool())
   {
     hud.setDrawBool(false);
   }
@@ -100,6 +100,9 @@ void Engine::play() {
         if ( keystate[SDL_SCANCODE_P] ) {
           if ( clock.isPaused() ) clock.unpause();
           else clock.pause();
+        }
+        if ( keystate[SDL_SCANCODE_F1] ) {
+          hud.setDrawBool(!hud.getDrawBool());
         }
         if ( keystate[SDL_SCANCODE_T] ) {
           switchSprite();

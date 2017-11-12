@@ -9,6 +9,8 @@ public:
   ~HUD();
   void draw();
   void setDrawBool(bool input);
+  bool getDrawBool();
+  bool getAlreadyBool();
 
 private:
   std::string movement;
@@ -17,6 +19,7 @@ private:
   const IOmod& io;
 
   bool drawHUD = true;
+  bool alreadyChanged = false;
 
   HUD();
   HUD(const HUD&);

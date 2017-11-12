@@ -39,4 +39,15 @@ void HUD::draw(){
 void HUD::setDrawBool(bool changeTo)
 {
   drawHUD = changeTo;
+  alreadyChanged = true;
+}
+
+bool HUD::getDrawBool()
+{
+  return drawHUD;
+}
+
+bool HUD::getAlreadyBool()
+{
+  return alreadyChanged;
 }
