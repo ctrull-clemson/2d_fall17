@@ -98,4 +98,29 @@
   <transparency>false</transparency>
 </ShineSprite>
 
+
+<Dog>
+  <file>assets/dog_left.png</file>
+  <startLoc x="50" y="900"/>
+  <frames>9</frames>
+  <imageWidth>256</imageWidth>
+  <imageHeight>123</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>400</speedX>
+  <speedY>50</speedY>
+  <transparency>false</transparency>
+</Dog>
+
+<DogRight>
+  <file>assets/dog_right.png</file>
+  <startLoc x="50" y="900"/>
+  <frames>9</frames>
+  <imageWidth>256</imageWidth>
+  <imageHeight>123</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>400</speedX>
+  <speedY>50</speedY>
+  <transparency>false</transparency>
+</DogRight>
+
 </GameData>

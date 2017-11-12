@@ -1,3 +1,6 @@
+#ifndef TWOWAY__H
+#define TWOWAY__H
+
 #include <string>
 #include <vector>
 #include <cmath>
@@ -39,3 +42,5 @@ protected:
   void advanceFrame(Uint32 ticks);
   TwoWayMultiSprite& operator=(const TwoWayMultiSprite&);
 };
+
+#endif

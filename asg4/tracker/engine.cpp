@@ -31,12 +31,15 @@ Engine::Engine() :
   viewport( Viewport::getInstance() ),
   sprites(std::vector<Drawable *> {}),
   currentSprite(0),
-  makeVideo( false )
+  makeVideo( false ),
+  myPlayer("Dog")
 {
   sprites.push_back(new Sprite("ShineSprite"));
   //sprites.push_back(new TwoWayMultiSprite("Dragon"));
-  //sprites.push_back(new TwoWayMultiSprite("Horse"));
-  Viewport::getInstance().setObjectToTrack(sprites[0]);
+  //sprites.push_back(new TwoWayMultiSprite("Dog"));
+  //myPlayer = new Player("Dog");
+  //Viewport::getInstance().setObjectToTrack(sprites[0]);
+  Viewport::getInstance().setObjectToTrack(&myPlayer);
   std::cout << "Loading complete" << std::endl;
 }
 
@@ -48,6 +51,7 @@ void Engine::draw() const {
   {
     sprite->draw();
   }
+  myPlayer.draw();
 
   viewport.draw();
   viewport.write();
@@ -67,6 +71,7 @@ void Engine::update(Uint32 ticks) {
   {
     sprite->update(ticks);
   }
+  myPlayer.update(ticks);
 
   mountains.update();
   road.update();
@@ -104,9 +109,6 @@ void Engine::play() {
         if ( keystate[SDL_SCANCODE_F1] ) {
           hud.setDrawBool(!hud.getDrawBool());
         }
-        if ( keystate[SDL_SCANCODE_T] ) {
-          switchSprite();
-        }
         if (keystate[SDL_SCANCODE_F4] && !makeVideo) {
           std::cout << "Initiating frame capture" << std::endl;
           makeVideo = true;
@@ -115,6 +117,19 @@ void Engine::play() {
           std::cout << "Terminating frame capture" << std::endl;
           makeVideo = false;
         }
+        if ( keystate[SDL_SCANCODE_W] ) {
+          myPlayer.up();
+        }
+        if ( keystate[SDL_SCANCODE_A] ) {
+          myPlayer.left();
+        }
+        if ( keystate[SDL_SCANCODE_S] ) {
+          myPlayer.down();
+        }
+        if ( keystate[SDL_SCANCODE_D] ) {
+          myPlayer.right();
+        }
+
       }
     }
 
