@@ -5,6 +5,7 @@
 #include "clock.h"
 #include "world.h"
 #include "viewport.h"
+#include "hud.h"
 
 class Engine {
 public:
@@ -17,6 +18,7 @@ private:
   const RenderContext* rc;
   const IOmod& io;
   Clock& clock;
+  HUD& hud;
 
   SDL_Renderer * const renderer;
   World mountains;

@@ -24,6 +24,7 @@ Engine::Engine() :
   rc( RenderContext::getInstance() ),
   io( IOmod::getInstance() ),
   clock( Clock::getInstance() ),
+  hud( HUD::getInstance() ),
   renderer( rc->getRenderer() ),
   mountains("back", Gamedata::getInstance().getXmlInt("back/factor") ),
   road("road", Gamedata::getInstance().getXmlInt("road/factor") ),
@@ -57,6 +58,8 @@ void Engine::draw() const {
 
   IOmod::getInstance().
     writeText(strm.str(), 20, 60, {0,0,255,255});
+
+  hud.draw();
 
   SDL_RenderPresent(renderer);
 }
