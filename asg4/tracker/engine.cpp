@@ -10,6 +10,7 @@
 #include "gamedata.h"
 #include "engine.h"
 #include "frameGenerator.h"
+#include "smartSprite.h"
 
 Engine::~Engine() {
   for(auto sprite : sprites)
@@ -34,7 +35,7 @@ Engine::Engine() :
   myPlayer("Dog")
 {
   sprites.push_back(new Sprite("ShineSprite"));
-  //sprites.push_back(new TwoWayMultiSprite("Dragon"));
+  sprites.push_back(new SmartSprite("Dragon", myPlayer.getPosition(), 256, 123));
   //sprites.push_back(new TwoWayMultiSprite("Dog"));
   //myPlayer = new Player("Dog");
   //Viewport::getInstance().setObjectToTrack(sprites[0]);

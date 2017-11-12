@@ -51,6 +51,7 @@
   <frameInterval>50</frameInterval>
   <speedX>400</speedX>
   <speedY>125</speedY>
+  <safeDistance>75</safeDistance>
   <transparency>false</transparency>
 </Dragon>
 
@@ -63,6 +64,7 @@
   <frameInterval>50</frameInterval>
   <speedX>400</speedX>
   <speedY>125</speedY>
+  <safeDistance>75</safeDistance>
   <transparency>false</transparency>
 </DragonRight>
 
@@ -92,8 +94,8 @@
 
 <ShineSprite>
   <file>assets/shine_sprite.png</file>
-  <startLoc x="800" y="125"/>
-  <speedX>350</speedX>
+  <startLoc x="100" y="800"/>
+  <speedX>0</speedX>
   <speedY>0</speedY>
   <transparency>false</transparency>
 </ShineSprite>
