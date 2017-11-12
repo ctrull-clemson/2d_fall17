@@ -20,6 +20,9 @@ private:
 
   bool drawHUD = true;
   bool alreadyChanged = false;
+  
+  int loc_x;
+  int loc_y;
 
   HUD();
   HUD(const HUD&);

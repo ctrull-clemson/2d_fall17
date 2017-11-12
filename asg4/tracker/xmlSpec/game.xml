@@ -33,6 +33,11 @@
   <transparency>true</transparency>
 </road>
 
+<hud>
+  <loc_x>0</loc_x>
+  <loc_y>0</loc_y>
+</hud>
+
 <font name="font">
   <file>fonts/arial.ttf</file>
   <size>24</size>
