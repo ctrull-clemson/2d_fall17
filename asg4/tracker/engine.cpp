@@ -16,7 +16,6 @@ Engine::~Engine() {
   {
     delete sprite;
   }
-
   std::cout << "Terminating program" << std::endl;
 }
 
@@ -117,19 +116,20 @@ void Engine::play() {
           std::cout << "Terminating frame capture" << std::endl;
           makeVideo = false;
         }
-        if ( keystate[SDL_SCANCODE_W] ) {
-          myPlayer.up();
-        }
-        if ( keystate[SDL_SCANCODE_A] ) {
-          myPlayer.left();
-        }
-        if ( keystate[SDL_SCANCODE_S] ) {
-          myPlayer.down();
-        }
-        if ( keystate[SDL_SCANCODE_D] ) {
-          myPlayer.right();
-        }
+      }
 
+
+      if ( keystate[SDL_SCANCODE_W] ) {
+        myPlayer.up();
+      }
+      if ( keystate[SDL_SCANCODE_A] ) {
+        myPlayer.left();
+      }
+      if ( keystate[SDL_SCANCODE_S] ) {
+        myPlayer.down();
+      }
+      if ( keystate[SDL_SCANCODE_D] ) {
+        myPlayer.right();
       }
     }
 

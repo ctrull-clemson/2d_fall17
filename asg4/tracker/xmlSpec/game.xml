@@ -106,7 +106,7 @@
   <imageWidth>256</imageWidth>
   <imageHeight>123</imageHeight>
   <frameInterval>50</frameInterval>
-  <speedX>400</speedX>
+  <speedX>600</speedX>
   <speedY>50</speedY>
   <transparency>false</transparency>
 </Dog>
@@ -118,7 +118,7 @@
   <imageWidth>256</imageWidth>
   <imageHeight>123</imageHeight>
   <frameInterval>50</frameInterval>
-  <speedX>400</speedX>
+  <speedX>600</speedX>
   <speedY>50</speedY>
   <transparency>false</transparency>
 </DogRight>

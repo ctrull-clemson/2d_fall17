@@ -26,11 +26,13 @@ void Player::stop() {
 void Player::right() {
   if ( getX() < worldWidth-getScaledWidth()) {
     setVelocityX(initialVelocity[0]);
+		images =  imagesRight;
   }
 }
 void Player::left()  {
   if ( getX() > 0) {
     setVelocityX(-initialVelocity[0]);
+    images = imagesLeft;
   }
 }
 void Player::up()    {
