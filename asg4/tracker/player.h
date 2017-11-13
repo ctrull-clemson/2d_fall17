@@ -2,6 +2,8 @@
 #define PLAYER__H
 
 #include "twowaymultisprite.h"
+#include <list>
+#include "smartSprite.h"
 
 class Player : public TwoWayMultiSprite {
 public:
@@ -18,6 +20,13 @@ public:
   void up();
   void down();
   void stop();
+
+  void attach( SmartSprite* o ) { observers.push_back(o); }
+  void detach( SmartSprite* o );
+
+protected:
+  std::list<SmartSprite*> observers;
+
 private:
   bool collision;
   Vector2f initialVelocity;

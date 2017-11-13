@@ -47,10 +47,27 @@ void Player::down()  {
 }
 
 void Player::update(Uint32 ticks) {
+  std::list<SmartSprite*>::iterator ptr = observers.begin();
+  while ( ptr != observers.end() ) {
+    (*ptr)->setPlayerPos( getPosition() );
+    ++ptr;
+  }
+
   if ( !collision ) advanceFrame(ticks);
 
   Vector2f incr = getVelocity() * static_cast<float>(ticks) * 0.001;
   setPosition(getPosition() + incr);
 
   stop();
+}
+
+void Player::detach( SmartSprite* o ) {
+  std::list<SmartSprite*>::iterator ptr = observers.begin();
+  while ( ptr != observers.end() ) {
+    if ( *ptr == o ) {
+      ptr = observers.erase(ptr);
+      return;
+    }
+    ++ptr;
+  }
 }

@@ -7,6 +7,7 @@
 #include "viewport.h"
 #include "hud.h"
 #include "player.h"
+#include "smartSprite.h"
 
 class CollisionStrategy;
 
@@ -28,7 +29,7 @@ private:
   World road;
   Viewport& viewport;
 
-  std::vector<Drawable *> sprites;
+  std::vector<SmartSprite *> sprites;
   std::vector<CollisionStrategy*> strategies;
   int currentStrategy;
   int currentSprite;

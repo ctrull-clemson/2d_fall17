@@ -34,16 +34,19 @@ Engine::Engine() :
   mountains("back", Gamedata::getInstance().getXmlInt("back/factor") ),
   road("road", Gamedata::getInstance().getXmlInt("road/factor") ),
   viewport( Viewport::getInstance() ),
-  sprites(std::vector<Drawable *> {}),
+  sprites(std::vector<SmartSprite *> {}),
   currentStrategy(0),
   currentSprite(0),
   collision( false ),
   makeVideo( false ),
   myPlayer(new Player("Dog"))
 {
-  sprites.push_back(new Sprite("ShineSprite"));
   sprites.push_back(new SmartSprite("Dragon", myPlayer->getPosition(), 256, 123));
-  
+  sprites.push_back(new SmartSprite("Horse", myPlayer->getPosition(), 256, 123));
+
+  myPlayer->attach( sprites[0] );
+  myPlayer->attach( sprites[1] );
+
   strategies.push_back( new RectangularCollisionStrategy );
   strategies.push_back( new PerPixelCollisionStrategy );
   strategies.push_back( new MidPointCollisionStrategy );
@@ -60,19 +63,19 @@ void Engine::draw() const {
   {
     sprite->draw();
   }
-  
+
   strategies[currentStrategy]->draw();
   if ( collision ) {
     IOmod::getInstance().writeText("Oops: Collision", 500, 90);
   }
-    
+
   myPlayer->draw();
-  
+
   viewport.draw();
   viewport.write();
 
   hud.draw();
-  
+
   // Used to make HUD disappear after a few seconds.
   unsigned int timeCheck = clock.getTicks();
   if(timeCheck >= 3000 && timeCheck <= 3020 && !hud.getAlreadyBool())
