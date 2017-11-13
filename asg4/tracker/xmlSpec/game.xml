@@ -2,13 +2,13 @@
 <GameData>
 <!-- screenTitle is also used to identify you and your animation.
      So make sure to include your name as part of the screenTitle -->
-<title>Wild Wild West</title>
+<title>Wild Wild West - ctrull</title>
 <maxStringSize>50</maxStringSize>
 
 <frameCapOn>true</frameCapOn>
 <period>17</period>
 
-<maxFrames>1200</maxFrames>
+<maxFrames>300</maxFrames>
 <username>ctrull</username>
 
 <view>
@@ -109,7 +109,7 @@
 
 <Dog>
   <file>assets/dog_left.png</file>
-  <startLoc x="500" y="780"/>
+  <startLoc x="350" y="780"/>
   <frames>9</frames>
   <imageWidth>256</imageWidth>
   <imageHeight>123</imageHeight>
@@ -121,7 +121,7 @@
 
 <DogRight>
   <file>assets/dog_right.png</file>
-  <startLoc x="500" y="900"/>
+  <startLoc x="350" y="900"/>
   <frames>9</frames>
   <imageWidth>256</imageWidth>
   <imageHeight>123</imageHeight>
