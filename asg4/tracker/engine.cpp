@@ -35,6 +35,7 @@ Engine::Engine() :
   road("road", Gamedata::getInstance().getXmlInt("road/factor") ),
   viewport( Viewport::getInstance() ),
   sprites(std::vector<SmartSprite *> {}),
+  strategies(std::vector<CollisionStrategy*> {}),
   currentStrategy(0),
   currentSprite(0),
   collision( false ),

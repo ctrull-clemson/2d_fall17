@@ -2,18 +2,21 @@
 
 Player::Player( const std::string& name) :
   TwoWayMultiSprite(name),
+  observers(std::list<SmartSprite*> {}),
   collision(false),
   initialVelocity(getVelocity())
 { }
 
 Player::Player(const Player& s) :
   TwoWayMultiSprite(s),
+  observers(std::list<SmartSprite*> {}),
   collision(s.collision),
   initialVelocity(s.getVelocity())
   { }
 
 Player& Player::operator=(const Player& s) {
   TwoWayMultiSprite::operator=(s);
+  observers = s.observers;
   collision = s.collision;
   initialVelocity = s.initialVelocity;
   return *this;

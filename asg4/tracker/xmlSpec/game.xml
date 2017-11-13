@@ -109,7 +109,7 @@
 
 <Dog>
   <file>assets/dog_left.png</file>
-  <startLoc x="500" y="900"/>
+  <startLoc x="500" y="780"/>
   <frames>9</frames>
   <imageWidth>256</imageWidth>
   <imageHeight>123</imageHeight>

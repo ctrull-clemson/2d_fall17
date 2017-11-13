@@ -31,6 +31,8 @@ TwoWayMultiSprite::TwoWayMultiSprite( const std::string& name) :
 
 TwoWayMultiSprite::TwoWayMultiSprite(const TwoWayMultiSprite& s) :
   Drawable(s),
+	imagesRight(s.imagesRight),
+	imagesLeft(s.imagesLeft),
   images(s.images),
   currentFrame(s.currentFrame),
   numberOfFrames( s.numberOfFrames ),
