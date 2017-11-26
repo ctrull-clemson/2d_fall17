@@ -109,6 +109,7 @@
 
 <Dog>
   <file>assets/dog_run_left.png</file>
+  <bullet>treat</bullet>
   <startLoc x="350" y="780"/>
   <frames>6</frames>
   <imageWidth>53</imageWidth>
@@ -122,6 +123,7 @@
 
 <DogRight>
   <file>assets/dog_run_right.png</file>
+  <bullet>treat</bullet>
   <startLoc x="350" y="900"/>
   <frames>6</frames>
   <imageWidth>53</imageWidth>
@@ -132,5 +134,17 @@
   <safeDistance>250</safeDistance>
   <transparency>false</transparency>
 </DogRight>
+
+<treat>
+  <file>images/dog_treat.png</file>
+  <interval>300</interval>
+  <distance>320</distance>
+  <startLoc x="350" y="900"/>
+  <minSpeedX>200</minSpeedX>
+  <speedX>200</speedX>
+  <speedY>0</speedY>
+  <strategy>rectangular</strategy>
+  <transparency>true</transparency>
+</treat>
 
 </GameData>

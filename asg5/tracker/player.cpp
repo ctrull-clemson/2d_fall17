@@ -1,17 +1,25 @@
+
+#include <algorithm>
 #include "player.h"
 
 Player::Player( const std::string& name) :
   TwoWayMultiSprite(name),
   observers(std::list<SmartSprite*> {}),
   collision(false),
-  initialVelocity(getVelocity())
+  initialVelocity(getVelocity()),
+  bulletName(Gamedata::getInstance().getXmlStr(name+"/bullet")),
+  bullets(),
+  throwInterval(Gamedata::getInstance().getXmlInt(bulletName+"/interval"))
 { }
 
 Player::Player(const Player& s) :
   TwoWayMultiSprite(s),
   observers(std::list<SmartSprite*> {}),
   collision(s.collision),
-  initialVelocity(s.getVelocity())
+  initialVelocity(s.getVelocity()),
+  bulletName(s.bulletName),
+  bullets(s.bullets),
+  throwInterval(s.throwInterval)
   { }
 
 Player& Player::operator=(const Player& s) {
@@ -20,6 +28,13 @@ Player& Player::operator=(const Player& s) {
   collision = s.collision;
   initialVelocity = s.initialVelocity;
   return *this;
+}
+
+void Player::draw() const{
+  TwoWayMultiSprite::draw();
+  for ( const Bullet& bullet: bullets) {
+    bullet.draw();
+  }
 }
 
 void Player::stop() {
@@ -61,6 +76,7 @@ void Player::update(Uint32 ticks) {
   Vector2f incr = getVelocity() * static_cast<float>(ticks) * 0.001;
   setPosition(getPosition() + incr);
 
+  timeSinceLastFrame += ticks;
   stop();
 }
 
@@ -73,4 +89,17 @@ void Player::detach( SmartSprite* o ) {
     }
     ++ptr;
   }
+}
+
+void Player::throwTreat(){
+  if ( timeSinceLastFrame < timeSinceLastFrame ) return;
+
+  float deltaX = getScaledWidth();
+  float deltaY = getScaledHeight()/2;
+  // I need to add some minSpeed to velocity:
+  Bullet bullet(bulletName);
+  bullet.setPosition( getPosition() +Vector2f(deltaX, deltaY) );
+  bullet.setVelocity( getVelocity() );
+  bullets.push_back( bullet );
+  timeSinceLastFrame = 0;
 }

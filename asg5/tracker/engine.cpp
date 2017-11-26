@@ -174,6 +174,9 @@ void Engine::play() {
       if ( keystate[SDL_SCANCODE_D] ) {
         myPlayer->right();
       }
+      if ( keystate[SDL_SCANCODE_SPACE]){
+        myPlayer->throwTreat();
+      }
     }
 
     // In this section of the event loop we allow key bounce:

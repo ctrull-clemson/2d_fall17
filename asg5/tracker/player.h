@@ -4,12 +4,14 @@
 #include "twowaymultisprite.h"
 #include <list>
 #include "smartSprite.h"
+#include "bullet.h"
 
 class Player : public TwoWayMultiSprite {
 public:
   Player(const std::string&);
   Player(const Player&);
   virtual void update(Uint32 ticks);
+  virtual void draw() const;
 
   void collided() { collision = true; }
   void missed() { collision = false; }
@@ -23,6 +25,7 @@ public:
 
   void attach( SmartSprite* o ) { observers.push_back(o); }
   void detach( SmartSprite* o );
+  void throwTreat();
 
 protected:
   std::list<SmartSprite*> observers;
@@ -30,5 +33,10 @@ protected:
 private:
   bool collision;
   Vector2f initialVelocity;
+
+  // Shooting variables
+  std::string bulletName;
+  std::list<Bullet> bullets;
+  float throwInterval;
 };
 #endif
