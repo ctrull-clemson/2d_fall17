@@ -43,6 +43,7 @@ Engine::Engine() :
   myPlayer(new Player("Dog"))
 {
   sprites.push_back(new SmartSprite("Dragon", myPlayer->getPosition(), 256, 123));
+  sprites.push_back(new SmartSprite("Dog", myPlayer->getPosition(), 256, 123));
   sprites.push_back(new SmartSprite("Horse", myPlayer->getPosition(), 256, 123));
 
   myPlayer->attach( sprites[0] );

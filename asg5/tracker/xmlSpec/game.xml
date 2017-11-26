@@ -108,26 +108,28 @@
 </ShineSprite>
 
 <Dog>
-  <file>assets/dog_left.png</file>
+  <file>assets/dog_run_left.png</file>
   <startLoc x="350" y="780"/>
-  <frames>9</frames>
-  <imageWidth>256</imageWidth>
-  <imageHeight>123</imageHeight>
+  <frames>6</frames>
+  <imageWidth>53</imageWidth>
+  <imageHeight>42</imageHeight>
   <frameInterval>50</frameInterval>
-  <speedX>600</speedX>
-  <speedY>500</speedY>
+  <speedX>350</speedX>
+  <speedY>0</speedY>
+  <safeDistance>250</safeDistance>
   <transparency>false</transparency>
 </Dog>
 
 <DogRight>
-  <file>assets/dog_right.png</file>
+  <file>assets/dog_run_right.png</file>
   <startLoc x="350" y="900"/>
-  <frames>9</frames>
-  <imageWidth>256</imageWidth>
-  <imageHeight>123</imageHeight>
+  <frames>6</frames>
+  <imageWidth>53</imageWidth>
+  <imageHeight>42</imageHeight>
   <frameInterval>50</frameInterval>
-  <speedX>600</speedX>
-  <speedY>500</speedY>
+  <speedX>350</speedX>
+  <speedY>0</speedY>
+  <safeDistance>250</safeDistance>
   <transparency>false</transparency>
 </DogRight>
 
