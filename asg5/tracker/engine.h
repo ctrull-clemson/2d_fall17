@@ -6,6 +6,7 @@
 #include "world.h"
 #include "viewport.h"
 #include "hud.h"
+#include "bullet_hud.h"
 #include "player.h"
 #include "smartSprite.h"
 
@@ -23,6 +24,7 @@ private:
   const IOmod& io;
   Clock& clock;
   HUD& hud;
+  BulletHUD& bullet_hud;
 
   SDL_Renderer * const renderer;
   World mountains;

@@ -30,6 +30,7 @@ Engine::Engine() :
   io( IOmod::getInstance() ),
   clock( Clock::getInstance() ),
   hud( HUD::getInstance() ),
+  bullet_hud( BulletHUD::getInstance() ),
   renderer( rc->getRenderer() ),
   mountains("back", Gamedata::getInstance().getXmlInt("back/factor") ),
   road("road", Gamedata::getInstance().getXmlInt("road/factor") ),
@@ -77,6 +78,7 @@ void Engine::draw() const {
   viewport.write();
 
   hud.draw();
+  bullet_hud.draw(myPlayer->getBulletCount(), myPlayer->getMaxBulletCount());
 
   // Used to make HUD disappear after a few seconds.
   unsigned int timeCheck = clock.getTicks();

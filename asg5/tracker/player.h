@@ -26,6 +26,8 @@ public:
   void attach( SmartSprite* o ) { observers.push_back(o); }
   void detach( SmartSprite* o );
   void throwTreat();
+  unsigned int getBulletCount() { return bullets.size(); }
+  unsigned int getMaxBulletCount() { return maxTreats; }
 
 protected:
   std::list<SmartSprite*> observers;
@@ -39,5 +41,6 @@ private:
   std::list<Bullet> bullets;
   float throwInterval;
   float minSpeed;
+  unsigned int maxTreats;
 };
 #endif

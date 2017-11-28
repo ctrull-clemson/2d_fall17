@@ -10,7 +10,8 @@ Player::Player( const std::string& name) :
   bulletName(Gamedata::getInstance().getXmlStr(name+"/bullet")),
   bullets(),
   throwInterval(Gamedata::getInstance().getXmlInt(bulletName+"/interval")),
-  minSpeed( Gamedata::getInstance().getXmlInt(bulletName+"/speedX") )
+  minSpeed( Gamedata::getInstance().getXmlInt(bulletName+"/speedX") ),
+  maxTreats(Gamedata::getInstance().getXmlInt(name+"/treatCount"))
 { }
 
 Player::Player(const Player& s) :
@@ -21,7 +22,8 @@ Player::Player(const Player& s) :
   bulletName(s.bulletName),
   bullets(s.bullets),
   throwInterval(s.throwInterval),
-  minSpeed(s.minSpeed)
+  minSpeed(s.minSpeed),
+  maxTreats(s.maxTreats)
   { }
 
 Player& Player::operator=(const Player& s) {
@@ -99,13 +101,14 @@ void Player::detach( SmartSprite* o ) {
 
 void Player::throwTreat(){
   if ( timeSinceLastFrame < timeSinceLastFrame ) return;
+  if ( bullets.size() >= (unsigned int)maxTreats) return;
 
   float deltaX = getScaledWidth();
   float deltaY = getScaledHeight()/2;
   // I need to add some minSpeed to velocity:
   Bullet bullet(bulletName);
   bullet.setPosition( getPosition() +Vector2f(deltaX, deltaY) );
-  bullet.setVelocity( getVelocity() + Vector2f(minSpeed, 0));
+  bullet.setVelocity( getVelocity()); // + Vector2f(minSpeed, 0)
   bullets.push_back( bullet );
   timeSinceLastFrame = 0;
 }
