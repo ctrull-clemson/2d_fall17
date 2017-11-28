@@ -11,7 +11,8 @@ Player::Player( const std::string& name) :
   bullets(),
   throwInterval(Gamedata::getInstance().getXmlInt(bulletName+"/interval")),
   minSpeed( Gamedata::getInstance().getXmlInt(bulletName+"/speedX") ),
-  maxTreats(Gamedata::getInstance().getXmlInt(name+"/treatCount"))
+  maxTreats(Gamedata::getInstance().getXmlInt(name+"/treatCount")),
+  timeSinceLastBullet(0)
 { }
 
 Player::Player(const Player& s) :
@@ -23,7 +24,8 @@ Player::Player(const Player& s) :
   bullets(s.bullets),
   throwInterval(s.throwInterval),
   minSpeed(s.minSpeed),
-  maxTreats(s.maxTreats)
+  maxTreats(s.maxTreats),
+  timeSinceLastBullet(s.timeSinceLastBullet)
   { }
 
 Player& Player::operator=(const Player& s) {
@@ -85,6 +87,7 @@ void Player::update(Uint32 ticks) {
   setPosition(getPosition() + incr);
 
   timeSinceLastFrame += ticks;
+  timeSinceLastBullet += ticks;
   stop();
 }
 
@@ -100,7 +103,7 @@ void Player::detach( SmartSprite* o ) {
 }
 
 void Player::throwTreat(){
-  if ( timeSinceLastFrame < timeSinceLastFrame ) return;
+  if ( timeSinceLastBullet < throwInterval ) return;
   if ( bullets.size() >= (unsigned int)maxTreats) return;
 
   float deltaX = getScaledWidth();
@@ -110,5 +113,5 @@ void Player::throwTreat(){
   bullet.setPosition( getPosition() +Vector2f(deltaX, deltaY) );
   bullet.setVelocity( getVelocity()); // + Vector2f(minSpeed, 0)
   bullets.push_back( bullet );
-  timeSinceLastFrame = 0;
+  timeSinceLastBullet = 0;
 }

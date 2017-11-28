@@ -119,7 +119,7 @@
   <speedY>0</speedY>
   <safeDistance>250</safeDistance>
   <transparency>false</transparency>
-  <treatCount>3</treatCount>
+  <treatCount>4</treatCount>
 </Dog>
 
 <DogRight>
@@ -134,7 +134,7 @@
   <speedY>0</speedY>
   <safeDistance>250</safeDistance>
   <transparency>false</transparency>
-  <treatCount>3</treatCount>
+  <treatCount>4</treatCount>
 </DogRight>
 
 <treat>

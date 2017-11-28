@@ -31,4 +31,3 @@ public:
 private:
   bool isVisible(Uint32, SDL_Surface*) const;
 };
-

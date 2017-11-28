@@ -42,5 +42,7 @@ private:
   float throwInterval;
   float minSpeed;
   unsigned int maxTreats;
+  float timeSinceLastBullet;
+
 };
 #endif
