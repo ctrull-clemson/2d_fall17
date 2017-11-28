@@ -38,6 +38,12 @@
   <loc_y>0</loc_y>
 </hud>
 
+<bullet_hud>
+  <loc_x>300</loc_x>
+  <loc_y>0</loc_y>
+</bullet_hud>
+
+
 <font name="font">
   <file>fonts/arial.ttf</file>
   <size>24</size>

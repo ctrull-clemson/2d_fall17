@@ -150,6 +150,9 @@ void Engine::play() {
         if ( keystate[SDL_SCANCODE_F1] ) {
           hud.setDrawBool(!hud.getDrawBool());
         }
+        if ( keystate[SDL_SCANCODE_F2] ) {
+          bullet_hud.setDrawBool(!bullet_hud.getDrawBool());
+        }
         if ( keystate[SDL_SCANCODE_M] ) {
           currentStrategy = (1 + currentStrategy) % strategies.size();
         }
@@ -162,7 +165,6 @@ void Engine::play() {
           makeVideo = false;
         }
       }
-
 
       if ( keystate[SDL_SCANCODE_W] ) {
         myPlayer->up();

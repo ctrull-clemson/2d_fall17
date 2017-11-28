@@ -18,8 +18,8 @@ BulletHUD::BulletHUD() :
   total_text("Total Available: "),
   renderer( RenderContext::getInstance()->getRenderer() ),
   io(IOmod::getInstance()),
-  loc_x(Gamedata::getInstance().getXmlInt("hud/loc_x") ),
-  loc_y(Gamedata::getInstance().getXmlInt("hud/loc_y") )
+  loc_x(Gamedata::getInstance().getXmlInt("bullet_hud/loc_x") ),
+  loc_y(Gamedata::getInstance().getXmlInt("bullet_hud/loc_y") )
 {}
 
 void BulletHUD::draw(unsigned int shot, unsigned int total){

@@ -1,3 +1,4 @@
+#include <vector>
 #include <iostream>
 #include <string>
 #include <SDL.h>
@@ -13,14 +14,17 @@ public:
   bool getAlreadyBool();
 
 private:
+  std::vector<std::string> hud_messages;
   std::string movement;
   std::string shooting;
+  std::string base_hud;
+  std::string bullet_hud;
   SDL_Renderer* renderer;
   const IOmod& io;
 
   bool drawHUD = true;
   bool alreadyChanged = false;
-  
+
   int loc_x;
   int loc_y;
 
