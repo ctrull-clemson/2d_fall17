@@ -1,0 +1,4 @@
+cmake-doc: /usr/share/doc/cmake-data/html/module/FindSDL_image.html
+emscripten: /usr/share/emscripten/system/include/SDL/SDL_image.h
+libsdl-image1.2-dev: /usr/include/SDL/SDL_image.h
+libsdl2-image-dev: /usr/include/SDL2/SDL_image.h

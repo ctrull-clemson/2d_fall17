@@ -136,7 +136,7 @@
 </DogRight>
 
 <treat>
-  <file>images/dog_treat.png</file>
+  <file>assets/dog_treat.png</file>
   <interval>300</interval>
   <distance>320</distance>
   <startLoc x="350" y="900"/>
