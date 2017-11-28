@@ -38,5 +38,6 @@ private:
   std::string bulletName;
   std::list<Bullet> bullets;
   float throwInterval;
+  float minSpeed;
 };
 #endif

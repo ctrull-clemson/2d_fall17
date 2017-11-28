@@ -9,7 +9,8 @@ Player::Player( const std::string& name) :
   initialVelocity(getVelocity()),
   bulletName(Gamedata::getInstance().getXmlStr(name+"/bullet")),
   bullets(),
-  throwInterval(Gamedata::getInstance().getXmlInt(bulletName+"/interval"))
+  throwInterval(Gamedata::getInstance().getXmlInt(bulletName+"/interval")),
+  minSpeed( Gamedata::getInstance().getXmlInt(bulletName+"/speedX") )
 { }
 
 Player::Player(const Player& s) :
@@ -19,7 +20,8 @@ Player::Player(const Player& s) :
   initialVelocity(s.getVelocity()),
   bulletName(s.bulletName),
   bullets(s.bullets),
-  throwInterval(s.throwInterval)
+  throwInterval(s.throwInterval),
+  minSpeed(s.minSpeed)
   { }
 
 Player& Player::operator=(const Player& s) {
@@ -71,6 +73,10 @@ void Player::update(Uint32 ticks) {
     ++ptr;
   }
 
+  for ( Bullet& bullet : bullets ) {
+    bullet.update(ticks);
+  }
+
   if ( !collision ) advanceFrame(ticks);
 
   Vector2f incr = getVelocity() * static_cast<float>(ticks) * 0.001;
@@ -99,7 +105,7 @@ void Player::throwTreat(){
   // I need to add some minSpeed to velocity:
   Bullet bullet(bulletName);
   bullet.setPosition( getPosition() +Vector2f(deltaX, deltaY) );
-  bullet.setVelocity( getVelocity() );
+  bullet.setVelocity( getVelocity() + Vector2f(minSpeed, 0));
   bullets.push_back( bullet );
   timeSinceLastFrame = 0;
 }
