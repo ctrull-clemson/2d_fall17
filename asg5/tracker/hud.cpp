@@ -14,10 +14,6 @@ HUD::~HUD() {
 }
 
 HUD::HUD() :
-  movement("- w,a,s,d to move"),
-  shooting("- space to shot"),
-  base_hud("- f1 for HUD"),
-  bullet_hud("- f2 for bullet HUD"),
   renderer( RenderContext::getInstance()->getRenderer() ),
   io(IOmod::getInstance()),
   loc_x(Gamedata::getInstance().getXmlInt("hud/loc_x") ),
@@ -26,13 +22,12 @@ HUD::HUD() :
   hud_messages.push_back("- w,a,s,d to move");
   hud_messages.push_back("- space to shot");
   hud_messages.push_back("- f1 for HUD");
-  hud_messages.push_back("- f2 for bullet HUD");
+  hud_messages.push_back("- f2 for Bullet HUD");
 }
 
 void HUD::draw(){
-  unsigned int entry_count = hud_messages.size() + 1;
   int window_w = 225;
-  int window_h = (int)(17 + (entry_count * 25));
+  int window_h = (int)(17 + ((hud_messages.size() + 1) * 25));
 
   if(drawHUD)
   {

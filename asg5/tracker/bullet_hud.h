@@ -10,7 +10,6 @@ public:
   void draw(unsigned int shot, unsigned int total);
   void setDrawBool(bool input);
   bool getDrawBool();
-  bool getAlreadyBool();
 
 private:
   std::string available_text;
@@ -19,7 +18,6 @@ private:
   const IOmod& io;
 
   bool drawHUD = true;
-  bool alreadyChanged = false;
 
   int loc_x;
   int loc_y;

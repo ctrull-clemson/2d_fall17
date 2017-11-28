@@ -42,15 +42,9 @@ void BulletHUD::draw(unsigned int shot, unsigned int total){
 void BulletHUD::setDrawBool(bool changeTo)
 {
   drawHUD = changeTo;
-  alreadyChanged = true;
 }
 
 bool BulletHUD::getDrawBool()
 {
   return drawHUD;
-}
-
-bool BulletHUD::getAlreadyBool()
-{
-  return alreadyChanged;
 }

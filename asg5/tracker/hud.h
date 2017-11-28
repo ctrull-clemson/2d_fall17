@@ -15,10 +15,6 @@ public:
 
 private:
   std::vector<std::string> hud_messages;
-  std::string movement;
-  std::string shooting;
-  std::string base_hud;
-  std::string bullet_hud;
   SDL_Renderer* renderer;
   const IOmod& io;
 
