@@ -74,7 +74,7 @@ void Engine::draw() const {
   viewport.write();
 
   hud.draw();
-  bullet_hud.draw(myPlayer->getBulletCount(), myPlayer->getMaxBulletCount());
+  bullet_hud.draw(myPlayer->getFreeCount(), myPlayer->getBulletCount());
 
   // Used to make HUD disappear after a few seconds.
   unsigned int timeCheck = clock.getTicks();

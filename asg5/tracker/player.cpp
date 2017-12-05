@@ -8,12 +8,18 @@ Player::Player( const std::string& name) :
   collision(false),
   initialVelocity(getVelocity()),
   bulletName(Gamedata::getInstance().getXmlStr(name+"/bullet")),
-  bullets(),
+  freeTreats(),
+  thrownTreats(),
   throwInterval(Gamedata::getInstance().getXmlInt(bulletName+"/interval")),
   minSpeed( Gamedata::getInstance().getXmlInt(bulletName+"/speedX") ),
   maxTreats(Gamedata::getInstance().getXmlInt(name+"/treatCount")),
   timeSinceLastBullet(0)
-{ }
+{
+  for(unsigned int i = 0; i < maxTreats; i++)
+  {
+    freeTreats.emplace_back(bulletName);
+  }
+}
 
 Player::Player(const Player& s) :
   TwoWayMultiSprite(s),
@@ -21,7 +27,8 @@ Player::Player(const Player& s) :
   collision(s.collision),
   initialVelocity(s.getVelocity()),
   bulletName(s.bulletName),
-  bullets(s.bullets),
+  freeTreats(s.freeTreats),
+  thrownTreats(s.thrownTreats),
   throwInterval(s.throwInterval),
   minSpeed(s.minSpeed),
   maxTreats(s.maxTreats),
@@ -38,7 +45,7 @@ Player& Player::operator=(const Player& s) {
 
 void Player::draw() const{
   TwoWayMultiSprite::draw();
-  for ( const Bullet& bullet: bullets) {
+  for ( const Bullet& bullet: thrownTreats) {
     bullet.draw();
   }
 }
@@ -77,8 +84,12 @@ void Player::update(Uint32 ticks) {
     ++ptr;
   }
 
-  for ( Bullet& bullet : bullets ) {
+  for ( Bullet& bullet : thrownTreats ) {
     bullet.update(ticks);
+    if(bullet.goneTooFar())
+    {
+
+    }
   }
 
   if ( !collision ) advanceFrame(ticks);
@@ -104,14 +115,20 @@ void Player::detach( SmartSprite* o ) {
 
 void Player::throwTreat(){
   if ( timeSinceLastBullet < throwInterval ) return;
-  if ( bullets.size() >= (unsigned int)maxTreats) return;
+  if ( freeTreats.size() == 0) return;
 
   float deltaX = getScaledWidth();
   float deltaY = getScaledHeight()/2;
+
   // I need to add some minSpeed to velocity:
-  Bullet bullet(bulletName);
+  //Bullet bullet(bulletName);
+
+  Bullet bullet = freeTreats.front();
+
   bullet.setPosition( getPosition() +Vector2f(deltaX, deltaY) );
   bullet.setVelocity( getVelocity()); // + Vector2f(minSpeed, 0)
-  bullets.push_back( bullet );
+
+  thrownTreats.push_back( bullet );
+  freeTreats.pop_front();
   timeSinceLastBullet = 0;
 }

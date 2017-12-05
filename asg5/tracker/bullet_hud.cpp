@@ -14,8 +14,8 @@ BulletHUD::~BulletHUD() {
 }
 
 BulletHUD::BulletHUD() :
-  available_text("Bullet List: "),
-  total_text("Total Available: "),
+  available_text("Free List: "),
+  total_text("Thrown Count: "),
   renderer( RenderContext::getInstance()->getRenderer() ),
   io(IOmod::getInstance()),
   loc_x(Gamedata::getInstance().getXmlInt("bullet_hud/loc_x") ),
