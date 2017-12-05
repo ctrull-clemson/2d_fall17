@@ -43,16 +43,12 @@ Engine::Engine() :
   makeVideo( false ),
   myPlayer(new Player("Dog"))
 {
-  sprites.push_back(new SmartSprite("Dragon", myPlayer->getPosition(), 256, 123));
+  //sprites.push_back(new SmartSprite("Dragon", myPlayer->getPosition(), 256, 123));
   sprites.push_back(new SmartSprite("Dog", myPlayer->getPosition(), 256, 123));
-  sprites.push_back(new SmartSprite("Horse", myPlayer->getPosition(), 256, 123));
 
-  myPlayer->attach( sprites[0] );
-  myPlayer->attach( sprites[1] );
+  myPlayer->attach( sprites[0] ); // smart sprite knows to avoid player
 
   strategies.push_back( new RectangularCollisionStrategy );
-  strategies.push_back( new PerPixelCollisionStrategy );
-  strategies.push_back( new MidPointCollisionStrategy );
 
   Viewport::getInstance().setObjectToTrack(myPlayer);
   std::cout << "Loading complete" << std::endl;

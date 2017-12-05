@@ -6,8 +6,7 @@
 #include "renderContext.h"
 
 void RectangularCollisionStrategy::draw() const {
-  IOmod::
-  getInstance().writeText("Strategy: Rectangular", 500, 30);
+  //IOmod::getInstance().writeText("Strategy: Rectangular", 500, 30);
 }
 
 bool RectangularCollisionStrategy::execute(
@@ -36,8 +35,7 @@ distance(float x1, float y1, float x2, float y2) const {
 }
 
 void MidPointCollisionStrategy::draw() const {
-  IOmod::
-  getInstance().writeText("Strategy: Distance", 500, 30);
+  //IOmod::getInstance().writeText("Strategy: Distance", 500, 30);
 }
 
 bool MidPointCollisionStrategy::execute(
@@ -58,8 +56,7 @@ bool MidPointCollisionStrategy::execute(
 
 
 void PerPixelCollisionStrategy::draw() const {
-  IOmod::
-  getInstance().writeText("Strategy: Per-Pixel ", 500, 30);
+  //IOmod::getInstance().writeText("Strategy: Per-Pixel ", 500, 30);
 }
 
 bool PerPixelCollisionStrategy::
@@ -116,10 +113,10 @@ bool PerPixelCollisionStrategy::execute(
   Uint16 width2 = obj2.getScaledWidth();
   Uint16 height2 = obj2.getScaledHeight();
 
-  int o1Left = p1[0]; 
+  int o1Left = p1[0];
   int o1Right = o1Left+width1;
 
-  int o2Left = p2[0]; 
+  int o2Left = p2[0];
   int o2Right = o2Left+width2;
   std::vector<int> sides;
   sides.reserve(4);
@@ -142,9 +139,9 @@ bool PerPixelCollisionStrategy::execute(
   lids.push_back( o2Down );
   std::sort( lids.begin(), lids.end() );
 
-  const SDL_Surface* temp1 = obj1.getSurface(); 
+  const SDL_Surface* temp1 = obj1.getSurface();
   SDL_Surface* surface1 = scaleSurface(temp1, width1, height1);
-  const SDL_Surface* temp2 = obj2.getSurface(); 
+  const SDL_Surface* temp2 = obj2.getSurface();
   SDL_Surface* surface2 = scaleSurface(temp2, width2, height2);
 
   SDL_LockSurface(surface1);
@@ -179,4 +176,3 @@ bool PerPixelCollisionStrategy::execute(
 
   return false;
 }
-

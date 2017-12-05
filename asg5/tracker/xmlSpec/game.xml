@@ -52,7 +52,7 @@
   <blue>0</blue>
   <alpha>0</alpha>
 </font>
-
+<!--
 <Dragon>
   <file>assets/dragon_left.png</file>
   <startLoc x="700" y="140"/>
@@ -112,7 +112,7 @@
   <speedY>0</speedY>
   <transparency>false</transparency>
 </ShineSprite>
-
+-->
 <Dog>
   <file>assets/dog_run_left.png</file>
   <bullet>treat</bullet>
@@ -123,7 +123,7 @@
   <frameInterval>50</frameInterval>
   <speedX>350</speedX>
   <speedY>0</speedY>
-  <safeDistance>250</safeDistance>
+  <safeDistance>325</safeDistance>
   <transparency>false</transparency>
   <treatCount>4</treatCount>
 </Dog>
@@ -138,7 +138,7 @@
   <frameInterval>50</frameInterval>
   <speedX>350</speedX>
   <speedY>0</speedY>
-  <safeDistance>250</safeDistance>
+  <safeDistance>325</safeDistance>
   <transparency>false</transparency>
   <treatCount>4</treatCount>
 </DogRight>
