@@ -153,6 +153,10 @@
   <speedY>0</speedY>
   <strategy>rectangular</strategy>
   <transparency>true</transparency>
+  <chunk>
+    <size>8</size>
+    <distance>15</distance>
+  </chunk>
 </treat>
 
 </GameData>
