@@ -131,7 +131,6 @@ void Player::throwTreat(){
   if ( freeTreats.size() == 0) return;
 
   float deltaX = getScaledWidth();
-  float deltaY = getScaledHeight()/2;
 
   Bullet* bullet = freeTreats.front();
 
