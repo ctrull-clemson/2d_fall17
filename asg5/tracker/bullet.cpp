@@ -6,16 +6,24 @@
 void Bullet::update(Uint32 ticks) {
   Vector2f pos = getPosition();
 
-  if(tooFar)
+  if(explosion)
   {
-    explode();
     explosion->update(ticks);
     if(explosion->chunkCount() == 0)
     {
       delete explosion;
       explosion = NULL;
+
+      setVelocityY(0);
+      setVelocityX(700);
+
+      tooFar = false;
     }
-    tooFar = false;
+  }
+
+  if(tooFar)
+  {
+    explode();
   }
   else if(std::abs(getVelocityX()) < 15)
   {
@@ -27,7 +35,7 @@ void Bullet::update(Uint32 ticks) {
     setVelocityY(.95 * getVelocityY());
     setVelocityX(.95 * getVelocityX());
     distance += ( hypot(getX()-pos[0], getY()-pos[1]) );
-    if (distance > maxDistance) tooFar = true;
+    //if (distance > maxDistance) tooFar = true;
   }
 
 }
