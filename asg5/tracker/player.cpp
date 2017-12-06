@@ -133,9 +133,6 @@ void Player::throwTreat(){
   float deltaX = getScaledWidth();
   float deltaY = getScaledHeight()/2;
 
-  // I need to add some minSpeed to velocity:
-  //Bullet bullet(bulletName);
-
   Bullet* bullet = freeTreats.front();
 
   if(!facingRight)

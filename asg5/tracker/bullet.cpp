@@ -19,25 +19,15 @@ void Bullet::update(Uint32 ticks) {
       setVelocityX(700);
 
       tooFar = false;
+      return;
     }
   }
 
-  if(tooFar)
-  {
-    explode();
-  }
-  else if(std::abs(getVelocityX()) < 15)
-  {
-    tooFar = true;
-  }
-  else
-  {
-    Sprite::update(ticks);
-    setVelocityY(.95 * getVelocityY());
-    setVelocityX(1.01 * getVelocityX());
-    distance += ( hypot(getX()-pos[0], getY()-pos[1]) );
-    //if (distance > maxDistance) tooFar = true;
-  }
+  Sprite::update(ticks);
+  setVelocityY(.95 * getVelocityY());
+  setVelocityX(.95 * getVelocityX());
+  distance += ( hypot(getX()-pos[0], getY()-pos[1]) );
+  //if (distance > maxDistance) tooFar = true;
 
 }
 
