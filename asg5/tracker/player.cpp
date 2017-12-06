@@ -9,15 +9,15 @@ Player::Player( const std::string& name) :
   initialVelocity(getVelocity()),
   bulletName(Gamedata::getInstance().getXmlStr(name+"/bullet")),
   freeTreats(),
-  thrownTreats(),
   throwInterval(Gamedata::getInstance().getXmlInt(bulletName+"/interval")),
   minSpeed( Gamedata::getInstance().getXmlInt(bulletName+"/speedX") ),
   maxTreats(Gamedata::getInstance().getXmlInt(name+"/treatCount")),
-  timeSinceLastBullet(0)
+  timeSinceLastBullet(0),
+  thrownTreats()
 {
   for(unsigned int i = 0; i < maxTreats; i++)
   {
-    freeTreats.emplace_back(bulletName);
+    freeTreats.emplace_back(new Bullet(bulletName));
   }
 }
 
@@ -28,11 +28,11 @@ Player::Player(const Player& s) :
   initialVelocity(s.getVelocity()),
   bulletName(s.bulletName),
   freeTreats(s.freeTreats),
-  thrownTreats(s.thrownTreats),
   throwInterval(s.throwInterval),
   minSpeed(s.minSpeed),
   maxTreats(s.maxTreats),
-  timeSinceLastBullet(s.timeSinceLastBullet)
+  timeSinceLastBullet(s.timeSinceLastBullet),
+  thrownTreats(s.thrownTreats)
   { }
 
 Player& Player::operator=(const Player& s) {
@@ -45,8 +45,8 @@ Player& Player::operator=(const Player& s) {
 
 void Player::draw() const{
   TwoWayMultiSprite::draw();
-  for ( const Bullet& bullet: thrownTreats) {
-    bullet.draw();
+  for (auto bullet: thrownTreats) {
+    bullet->draw();
   }
 }
 
@@ -84,9 +84,9 @@ void Player::update(Uint32 ticks) {
     ++ptr;
   }
 
-  for ( Bullet& bullet : thrownTreats ) {
-    bullet.update(ticks);
-    if(bullet.goneTooFar())
+  for (auto bullet : thrownTreats ) {
+    bullet->update(ticks);
+    if(bullet->goneTooFar())
     {
 
     }
@@ -123,10 +123,10 @@ void Player::throwTreat(){
   // I need to add some minSpeed to velocity:
   //Bullet bullet(bulletName);
 
-  Bullet bullet = freeTreats.front();
+  Bullet* bullet = freeTreats.front();
 
-  bullet.setPosition( getPosition() +Vector2f(deltaX, deltaY) );
-  bullet.setVelocity( getVelocity()); // + Vector2f(minSpeed, 0)
+  bullet->setPosition( getPosition() +Vector2f(deltaX, deltaY) );
+  bullet->setVelocity( getVelocity()); // + Vector2f(minSpeed, 0)
 
   thrownTreats.push_back( bullet );
   freeTreats.pop_front();

@@ -39,12 +39,15 @@ private:
 
   // Shooting variables
   std::string bulletName;
-  std::list<Bullet> freeTreats;
-  std::list<Bullet> thrownTreats;
+  std::list<Bullet *> freeTreats;
   float throwInterval;
   float minSpeed;
   unsigned int maxTreats;
   float timeSinceLastBullet;
+
+protected:
+  friend class Engine;
+  std::list<Bullet *> thrownTreats;
 
 };
 #endif

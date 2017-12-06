@@ -8,72 +8,26 @@ Clemson Email Address:
   ctrull@g.clemson.edu
 
 Project no:
-  #4
+  #5
 
 Project due date:
-  Monday November 13, 2017
+  Sunday December 3, 2017
 
 Project description:
-  Incorporated a player class with movement controls (traditional asdw keys).
-    Space button will be implemented for projectiles in the next project.
-
-  Built a HUD whos location can be changed via the XML. Defaults to top left
-    of the screen. F1 can be pressed to toggle the HUD. All text on the HUD
-    currently comes from within the code as controls are not changeable via the
-    XML so it did not make sense to offer the ability to change the text on
-    screen without a way to change the keybindings.
-
-  Collision detection was brought in. Currently I have access to all 3 of the
-    strategies that we covered in class and can change between them with 'm'.
-    In the next project I plan to remove the option to switch between them and
-    to set the strategies as I see appropriate for the various sprites.
-
-  AI "Smart Sprites" have been added (currently 2, the horse and the dragon).
-    These sprites will attempt to run away from the player whenever they get
-    within a certain safe distance. Currently there is no additional effects if
-    the player catches the AI, but in the next project I plan to make the Smart
-    Sprites follow the player once they are "caught".
-
-Game Level Description:
-  For my game I am still working on developing what all I want my level to
-    include. My current plan is to have a game that focuses on how fast the
-    player can complete a task instead of having a shooter to see how enemies
-    they can kill/beat/etc.
-
-  The plan is to have the game spawn a number of immobile obstacles (dumb
-    sprites with no move speed, just in the way to be in the way. Currently I am
-    thinking houses and trees) based on information in the xml with a hard cap
-    listed in the program itself. The players goal will to be to go around and
-    "catch" all of the dogs (smart sprites) one at a time and bring them back to
-    their house. For my bullet pool I plan on giving the player the ability to
-    throw tennis balls to attract the dogs so they will chase the ball and be
-    willing to get closer to the player. Any balls that do not attract the
-    attention of a dog will sit on the ground, and the player can only get the
-    balls added back to their bullet list by picking them up or by coming in
-    contact with a dog who has picked up a ball.
-
-  The game will end once all dogs have been returned to their homes. Depending
-    on time and difficulty of implementation I will likely make it so each dog
-    has a specified home, with bonus points being awarded based on how many
-    throws the player needed, how long it took them, etc. I might implement an
-    enemy AI dog catcher or something to make the player have to focus on dogs
-    closer to the catcher instead of closer to them.
-
-  For sprites most of the current sprites I am using will not be used for any
-    of the upcoming projects. I will likely use the dog but besides that the
-    rest don't make sense given the scope for the game I list out in the next
-    section.
+    Built a bullet HUD with information pertaining to the free/thrown list
+    associated with the player. When you throw a treat it gets moved from the
+    free to thrown list. After it explodes it gets added back to the free list.
 
 The easiest part of this project:
-  Thanks to the various examples provided most aspects of this project were
-    straight forward and easy to understand. It was a little unclear on what was
-    expected for a "reconfigurable" HUD based solely on the paper.pdf
-    description of the project.
+    The bullet HUD took almost no time since I could re-use the code I had for
+    the HUD that I made in a previous deliverable.
 
 Problems that I had in completing this project:
-  I did not feel like anything with this project was overly difficult. I did
-    need to spend some time going back and seeing what classes that derive from
-    Drawable had which variables and getter functions.
+    Finding time to work on the project. I didn't manage my time very well in
+    the past few weeks so I had to push this off into the 3 day late grace
+    period. Getting the basic features (hud, bullet list, exploding) were not
+    too difficult, but finding the best way to do bullet collision detection
+    was rough. I need to refactor my code pretty badly.
 
 Sprite Resources:
   horses: http://spritedatabase.net/file/20905

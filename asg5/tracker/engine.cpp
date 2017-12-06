@@ -113,6 +113,21 @@ void Engine::checkForCollisions() {
     myPlayer->missed();
     collision = false;
   }
+  //std::list<Bullet> treats = myPlayer->thrownTreats;
+}
+
+void Engine::checkForBulletCollisions() {
+  /*
+  std::list<Bullet> treats = myPlayer->thrownTreats;
+  for ( const Drawable* d : sprites ) {
+    for(auto t : treats)
+    {
+      if ( strategies[currentStrategy]->execute(*t, *d) ) {
+        t.explode();
+      }
+    }
+  }
+  */
 }
 
 void Engine::switchSprite(){
