@@ -88,6 +88,7 @@ void Engine::draw() const {
 
 void Engine::update(Uint32 ticks) {
   checkForCollisions();
+  checkForBulletCollisions();
   myPlayer->update(ticks);
   for(auto sprite : sprites)
   {
@@ -117,17 +118,16 @@ void Engine::checkForCollisions() {
 }
 
 void Engine::checkForBulletCollisions() {
-  /*
-  std::list<Bullet> treats = myPlayer->thrownTreats;
+
+  std::list<Bullet *> treats = myPlayer->thrownTreats;
   for ( const Drawable* d : sprites ) {
     for(auto t : treats)
     {
       if ( strategies[currentStrategy]->execute(*t, *d) ) {
-        t.explode();
+        t->explode();
       }
     }
   }
-  */
 }
 
 void Engine::switchSprite(){

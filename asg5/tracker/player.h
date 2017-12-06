@@ -44,6 +44,7 @@ private:
   float minSpeed;
   unsigned int maxTreats;
   float timeSinceLastBullet;
+  bool facingRight;
 
 protected:
   friend class Engine;

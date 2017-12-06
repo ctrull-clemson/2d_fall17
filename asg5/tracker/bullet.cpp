@@ -34,7 +34,7 @@ void Bullet::update(Uint32 ticks) {
   {
     Sprite::update(ticks);
     setVelocityY(.95 * getVelocityY());
-    setVelocityX(.95 * getVelocityX());
+    setVelocityX(1.01 * getVelocityX());
     distance += ( hypot(getX()-pos[0], getY()-pos[1]) );
     //if (distance > maxDistance) tooFar = true;
   }

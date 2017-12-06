@@ -13,6 +13,7 @@ Player::Player( const std::string& name) :
   minSpeed( Gamedata::getInstance().getXmlInt(bulletName+"/speedX") ),
   maxTreats(Gamedata::getInstance().getXmlInt(name+"/treatCount")),
   timeSinceLastBullet(0),
+  facingRight(true),
   thrownTreats()
 {
   for(unsigned int i = 0; i < maxTreats; i++)
@@ -32,6 +33,7 @@ Player::Player(const Player& s) :
   minSpeed(s.minSpeed),
   maxTreats(s.maxTreats),
   timeSinceLastBullet(s.timeSinceLastBullet),
+  facingRight(s.facingRight),
   thrownTreats(s.thrownTreats)
   { }
 
@@ -59,12 +61,14 @@ void Player::right() {
     setVelocityX(initialVelocity[0]*2);
 		images =  imagesRight;
   }
+  facingRight = true;
 }
 void Player::left()  {
   if ( getX() > 0) {
     setVelocityX(-initialVelocity[0]*2);
     images = imagesLeft;
   }
+  facingRight = false;
 }
 void Player::up()    {
   if ( getY() > 0) {
@@ -134,8 +138,16 @@ void Player::throwTreat(){
 
   Bullet* bullet = freeTreats.front();
 
-  bullet->setPosition( getPosition() +Vector2f(deltaX, deltaY) );
-  bullet->setVelocity( getVelocity() + Vector2f(minSpeed, 0)); //
+  if(!facingRight)
+  {
+    bullet->setPosition( getPosition() - Vector2f(deltaX, 0) );
+    bullet->setVelocity( getVelocity() - Vector2f(minSpeed, 0));
+  }
+  else
+  {
+    bullet->setPosition( getPosition() + Vector2f(deltaX, 0) );
+    bullet->setVelocity( getVelocity() + Vector2f(minSpeed, 0));
+  }
 
   thrownTreats.push_back( bullet );
   freeTreats.pop_front();
