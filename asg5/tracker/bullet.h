@@ -10,15 +10,18 @@ public:
     distance(0),
     maxDistance(Gamedata::getInstance().getXmlInt(name+"/distance")),
     tooFar(false),
-    explosion()
+    explosion(),
+    doneExploding(false)
   { }
   virtual void update(Uint32 ticks);
   virtual void draw() const;
   bool goneTooFar() const { return tooFar; }
+  bool isDoneExploding() const { return doneExploding; }
   void explode() { if ( !explosion ) explosion = new ExplodingSprite(*this); };
   void reset() {
     tooFar = false;
     distance = 0;
+    doneExploding = false;
   }
 
 private:
@@ -26,4 +29,5 @@ private:
   float maxDistance;
   bool tooFar;
   ExplodingSprite * explosion;
+  bool doneExploding;
 };

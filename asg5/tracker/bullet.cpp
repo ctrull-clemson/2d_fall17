@@ -13,6 +13,7 @@ void Bullet::update(Uint32 ticks) {
     {
       delete explosion;
       explosion = NULL;
+      doneExploding = true;
 
       setVelocityY(0);
       setVelocityX(700);

@@ -84,11 +84,20 @@ void Player::update(Uint32 ticks) {
     ++ptr;
   }
 
-  for (auto bullet : thrownTreats ) {
-    bullet->update(ticks);
-    if(bullet->goneTooFar())
+  std::list<Bullet*>::iterator it = thrownTreats.begin();
+  while(it != thrownTreats.end())
+  {
+    (*it)->update(ticks);
+    if((*it)->isDoneExploding())
     {
+      (*it)->reset();
+      freeTreats.push_back(*it);
+      it = thrownTreats.erase(it);
+    }
 
+    else
+    {
+      ++it;
     }
   }
 
@@ -126,7 +135,7 @@ void Player::throwTreat(){
   Bullet* bullet = freeTreats.front();
 
   bullet->setPosition( getPosition() +Vector2f(deltaX, deltaY) );
-  bullet->setVelocity( getVelocity()); // + Vector2f(minSpeed, 0)
+  bullet->setVelocity( getVelocity() + Vector2f(minSpeed, 0)); //
 
   thrownTreats.push_back( bullet );
   freeTreats.pop_front();
