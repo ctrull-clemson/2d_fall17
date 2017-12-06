@@ -14,6 +14,7 @@ HUD::~HUD() {
 }
 
 HUD::HUD() :
+  hud_messages(),
   renderer( RenderContext::getInstance()->getRenderer() ),
   io(IOmod::getInstance()),
   loc_x(Gamedata::getInstance().getXmlInt("hud/loc_x") ),

@@ -30,4 +30,6 @@ private:
   bool tooFar;
   ExplodingSprite * explosion;
   bool doneExploding;
+  Bullet(const Bullet&) = delete;  
+  Bullet& operator=(const Bullet&);
 };
