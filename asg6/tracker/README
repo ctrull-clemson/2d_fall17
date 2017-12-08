@@ -1,0 +1,36 @@
+Name:
+  Christian Trull
+
+Course:
+  CPSC 4160 2D Game Design
+
+Clemson Email Address:
+  ctrull@g.clemson.edu
+
+Project no:
+  #5
+
+Project due date:
+  Sunday December 3, 2017
+
+Project description:
+    Built a bullet HUD with information pertaining to the free/thrown list
+    associated with the player. When you throw a treat it gets moved from the
+    free to thrown list. After it explodes it gets added back to the free list.
+
+The easiest part of this project:
+    The bullet HUD took almost no time since I could re-use the code I had for
+    the HUD that I made in a previous deliverable.
+
+Problems that I had in completing this project:
+    Finding time to work on the project. I didn't manage my time very well in
+    the past few weeks so I had to push this off into the 3 day late grace
+    period. Getting the basic features (hud, bullet list, exploding) were not
+    too difficult, but finding the best way to do bullet collision detection
+    was rough. I need to refactor my code pretty badly.
+
+Sprite Resources:
+  horses: http://spritedatabase.net/file/20905
+  black_dragon: https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjXi7TImuDWAhXLZiYKHYOJB0UQjhwIBQ&url=http%3A%2F%2Fwww.gdunlimited.net%2Fforums%2Ftopic%2F9493-dragon-sprites%2F&psig=AOvVaw33czvpLjIX1Bnhq2jzlDyY&ust=1507523878015078
+  rock 4: https://opengameart.org/sites/default/files/rock_4.png
+  dog: https://www.spriters-resource.com/pc_computer/mnmvii/sheet/43211/

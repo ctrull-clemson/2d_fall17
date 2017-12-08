@@ -1,0 +1,162 @@
+<?xml version = "1.0"?>
+<GameData>
+<!-- screenTitle is also used to identify you and your animation.
+     So make sure to include your name as part of the screenTitle -->
+<title>Wild Wild West - ctrull</title>
+<maxStringSize>50</maxStringSize>
+
+<frameCapOn>true</frameCapOn>
+<period>17</period>
+
+<maxFrames>300</maxFrames>
+<username>ctrull</username>
+
+<view>
+  <width>854</width>
+  <height>500</height>
+</view>
+
+<world>
+  <width>854</width>
+  <height>1080</height>
+</world>
+
+<back>
+  <file>assets/rock_bg.png</file>
+  <factor>2</factor>
+  <transparency>false</transparency>
+</back>
+
+<road>
+  <file>assets/dirt_road.png</file>
+  <factor>1</factor>
+  <transparency>true</transparency>
+</road>
+
+<hud>
+  <loc_x>0</loc_x>
+  <loc_y>0</loc_y>
+</hud>
+
+<bullet_hud>
+  <loc_x>300</loc_x>
+  <loc_y>0</loc_y>
+</bullet_hud>
+
+
+<font name="font">
+  <file>fonts/arial.ttf</file>
+  <size>24</size>
+  <red>255</red>
+  <green>0</green>
+  <blue>0</blue>
+  <alpha>0</alpha>
+</font>
+<!--
+<Dragon>
+  <file>assets/dragon_left.png</file>
+  <startLoc x="700" y="140"/>
+  <frames>4</frames>
+  <imageWidth>96</imageWidth>
+  <imageHeight>100</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>400</speedX>
+  <speedY>125</speedY>
+  <safeDistance>180</safeDistance>
+  <transparency>false</transparency>
+</Dragon>
+
+<DragonRight>
+  <file>assets/dragon_right.png</file>
+  <startLoc x="700" y="140"/>
+  <frames>4</frames>
+  <imageWidth>96</imageWidth>
+  <imageHeight>100</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>400</speedX>
+  <speedY>125</speedY>
+  <safeDistance>180</safeDistance>
+  <transparency>false</transparency>
+</DragonRight>
+
+<Horse>
+  <file>assets/horses_left.png</file>
+  <startLoc x="50" y="950"/>
+  <frames>6</frames>
+  <imageWidth>156</imageWidth>
+  <imageHeight>95</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>500</speedX>
+  <speedY>0</speedY>
+  <safeDistance>175</safeDistance>
+  <transparency>false</transparency>
+</Horse>
+
+<HorseRight>
+  <file>assets/horses_right.png</file>
+  <startLoc x="50" y="950"/>
+  <frames>6</frames>
+  <imageWidth>156</imageWidth>
+  <imageHeight>95</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>500</speedX>
+  <speedY>0</speedY>
+  <safeDistance>175</safeDistance>
+  <transparency>false</transparency>
+</HorseRight>
+
+<ShineSprite>
+  <file>assets/shine_sprite.png</file>
+  <startLoc x="100" y="800"/>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <transparency>false</transparency>
+</ShineSprite>
+-->
+<Dog>
+  <file>assets/dog_run_left.png</file>
+  <bullet>treat</bullet>
+  <startLoc x="350" y="780"/>
+  <frames>6</frames>
+  <imageWidth>53</imageWidth>
+  <imageHeight>42</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>350</speedX>
+  <speedY>0</speedY>
+  <safeDistance>275</safeDistance>
+  <transparency>false</transparency>
+  <treatCount>4</treatCount>
+</Dog>
+
+<DogRight>
+  <file>assets/dog_run_right.png</file>
+  <bullet>treat</bullet>
+  <startLoc x="350" y="900"/>
+  <frames>6</frames>
+  <imageWidth>53</imageWidth>
+  <imageHeight>42</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>350</speedX>
+  <speedY>0</speedY>
+  <safeDistance>275</safeDistance>
+  <transparency>false</transparency>
+  <treatCount>4</treatCount>
+</DogRight>
+
+<treat>
+  <file>assets/dog_treat.png</file>
+  <interval>300</interval>
+  <distance>320</distance>
+  <startLoc x="350" y="900"/>
+  <minSpeedX>200</minSpeedX>
+  <speedX>200</speedX>
+  <speedY>0</speedY>
+  <strategy>rectangular</strategy>
+  <transparency>true</transparency>
+  <chunk>
+    <size>8</size>
+    <distance>15</distance>
+  </chunk>
+</treat>
+
+</GameData>
