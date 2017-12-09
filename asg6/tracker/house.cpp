@@ -2,17 +2,13 @@
 #include "gamedata.h"
 #include "renderContext.h"
 
-void House::switchFrame() {
-	haveDog = true;
-}
-
 House::House( const std::string& name) :
   Drawable(name,
            Vector2f(Gamedata::getInstance().getXmlInt(name+"/startLoc/x"),
                     Gamedata::getInstance().getXmlInt(name+"/startLoc/y")),
            Vector2f(0,0)
            ),
-  images( RenderContext::getInstance()->getImages(name) ),
+  images( RenderContext::getInstance()->getImages(name)),
   hasDog(true),
   numberOfFrames( Gamedata::getInstance().getXmlInt(name+"/frames") ),
   worldWidth( Gamedata::getInstance().getXmlInt("world/width") ),

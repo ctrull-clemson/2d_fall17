@@ -59,12 +59,14 @@ Engine::Engine() :
   int base_y = std::abs(Gamedata::getInstance().getXmlInt("game/startLoc/y"));
   int house_x, house_y;
   int spacing = Gamedata::getInstance().getXmlInt("game/spacing") + Gamedata::getInstance().getXmlInt("House/imageWidth");
-  int houseCount = std::min(1, Gamedata::getInstance().getXmlInt("game/houses"));
+  int houseCount = std::max(1, Gamedata::getInstance().getXmlInt("game/houses"));
+  int housesPerRow = (int)(houseCount/3);
+  if((housesPerRow * 3) < houseCount) { housesPerRow++; }
   for(int i = 0; i < houseCount; i++)
   {
-    house_x = base_x + (spacing * (i % (int)(houseCount/3)));
-    house_y = base_y + (spacing * (int)(houseCount/3));
-    houses.push_back(new House("House"), house_x, house_y);
+    house_x = base_x + (spacing * (i % housesPerRow));
+    house_y = base_y + (spacing * (int)(i / housesPerRow));
+    houses.push_back(new House("House", house_x, house_y));
   }
 
   // Load in all dogs
@@ -92,12 +94,23 @@ void Engine::draw() const {
   mountains.draw();
   road.draw();
 
+  for(auto h : houses)
+  {
+    h->draw();
+  }
+
+  for(auto h : empty_houses)
+  {
+    h->draw();
+  }
+
+
   for(auto sprite : sprites)
   {
     sprite->draw();
   }
 
-  strategies[currentStrategy]->draw();
+  // Likely can remove this once house map is completely implemented
   if ( collision ) {
     IOmod::getInstance().writeText("Oops: Collision", 500, 90);
   }

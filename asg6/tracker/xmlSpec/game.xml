@@ -2,7 +2,7 @@
 <GameData>
 <!-- screenTitle is also used to identify you and your animation.
      So make sure to include your name as part of the screenTitle -->
-<title>Wild Wild West - ctrull</title>
+<title>The Great Dog Rescue - ctrull</title>
 <maxStringSize>50</maxStringSize>
 
 <frameCapOn>true</frameCapOn>
@@ -17,7 +17,7 @@
 </view>
 
 <game>
-  <dogs>3</dogs>
+  <dogs>4</dogs>
   <houses>15</houses>
   <spacing>75</spacing>
   <startLoc x="50" y="225"/>
@@ -25,7 +25,7 @@
 
 <world>
   <width>1000</width>
-  <height>800</height>house
+  <height>800</height>
 </world>
 
 <back>
@@ -122,7 +122,7 @@
 -->
 
 <House>
-  <file>assets/house_not_found.png</file>
+  <file>assets/houses.png</file>
   <frames>2</frames>
   <startLoc x="350" y="780"/>
   <imageWidth>125</imageWidth>
@@ -133,7 +133,7 @@
 <Dog>
   <file>assets/dog_run_left.png</file>
   <bullet>treat</bullet>
-  <startLoc x="350" y="780"/>
+  <startLoc x="200" y="360"/>
   <frames>6</frames>
   <imageWidth>53</imageWidth>
   <imageHeight>42</imageHeight>
@@ -148,7 +148,7 @@
 <DogRight>
   <file>assets/dog_run_right.png</file>
   <bullet>treat</bullet>
-  <startLoc x="350" y="900"/>
+  <startLoc x="50" y="50"/>
   <frames>6</frames>
   <imageWidth>53</imageWidth>
   <imageHeight>42</imageHeight>
