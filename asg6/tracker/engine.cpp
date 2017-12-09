@@ -21,6 +21,12 @@ Engine::~Engine() {
   for ( CollisionStrategy* strategy : strategies ) {
     delete strategy;
   }
+  for ( House* h : houses ) {
+    delete h;
+  }
+  for ( House* eh : empty_houses ) {
+    delete eh;
+  }
   delete myPlayer;
   std::cout << "Terminating program" << std::endl;
 }
@@ -36,19 +42,47 @@ Engine::Engine() :
   road("road", Gamedata::getInstance().getXmlInt("road/factor") ),
   viewport( Viewport::getInstance() ),
   sprites(std::vector<SmartSprite *> {}),
-  strategies(std::vector<CollisionStrategy*> {}),
+  strategies(std::vector<CollisionStrategy *> {}),
+  houses(std::vector<House *> {}),
+  empty_houses(std::vector<House *> {}),
   currentStrategy(0),
   currentSprite(0),
   collision( false ),
   makeVideo( false ),
   myPlayer(new Player("Dog"))
 {
-  //sprites.push_back(new SmartSprite("Dragon", myPlayer->getPosition(), 256, 123));
-  sprites.push_back(new SmartSprite("Dog", myPlayer->getPosition(), 256, 123));
-
-  myPlayer->attach( sprites[0] ); // smart sprite knows to avoid player
-
   strategies.push_back( new RectangularCollisionStrategy );
+
+  // Load in all the houses
+    // Get size of house, starting (x,y) for first house, spacing
+  int base_x = std::abs(Gamedata::getInstance().getXmlInt("game/startLoc/x"));
+  int base_y = std::abs(Gamedata::getInstance().getXmlInt("game/startLoc/y"));
+  int house_x, house_y;
+  int spacing = Gamedata::getInstance().getXmlInt("game/spacing") + Gamedata::getInstance().getXmlInt("House/imageWidth");
+  int houseCount = std::min(1, Gamedata::getInstance().getXmlInt("game/houses"));
+  for(int i = 0; i < houseCount; i++)
+  {
+    house_x = base_x + (spacing * (i % (int)(houseCount/3)));
+    house_y = base_y + (spacing * (int)(houseCount/3));
+    houses.push_back(new House("House"), house_x, house_y);
+  }
+
+  // Load in all dogs
+  int dogCount = std::min(Gamedata::getInstance().getXmlInt("game/dogs"), houseCount);
+  for(int i = 0; i < dogCount; i++)
+  {
+    // Create SmartSprite dog
+    // Need to fix starting location
+    sprites.push_back(new SmartSprite("Dog", myPlayer->getPosition(), 256, 123));
+    myPlayer->attach( sprites[i] ); // smart sprite knows to avoid player
+
+    // Populate "empty house" list, set dog, move from houses
+    int index = (rand() % houses.size());
+    House * transfer = houses[index];
+    transfer->setStatus(false);
+    empty_houses.push_back(transfer);
+    houses.erase(houses.begin() + index);
+  }
 
   Viewport::getInstance().setObjectToTrack(myPlayer);
   std::cout << "Loading complete" << std::endl;

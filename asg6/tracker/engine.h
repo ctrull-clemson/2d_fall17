@@ -9,6 +9,7 @@
 #include "bullet_hud.h"
 #include "player.h"
 #include "smartSprite.h"
+#include "house.h"
 
 class CollisionStrategy;
 
@@ -33,6 +34,8 @@ private:
 
   std::vector<SmartSprite *> sprites;
   std::vector<CollisionStrategy*> strategies;
+  std::vector<House *> houses;
+  std::vector<House *> empty_houses;
   int currentStrategy;
   int currentSprite;
   bool collision;

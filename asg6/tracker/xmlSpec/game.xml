@@ -12,13 +12,20 @@
 <username>ctrull</username>
 
 <view>
-  <width>854</width>
-  <height>500</height>
+  <width>1000</width>
+  <height>800</height>
 </view>
 
+<game>
+  <dogs>3</dogs>
+  <houses>15</houses>
+  <spacing>75</spacing>
+  <startLoc x="50" y="225"/>
+</game>
+
 <world>
-  <width>854</width>
-  <height>1080</height>
+  <width>1000</width>
+  <height>800</height>house
 </world>
 
 <back>
@@ -81,7 +88,7 @@
 
 <Horse>
   <file>assets/horses_left.png</file>
-  <startLoc x="50" y="950"/>
+  <startLoc x="50" y="950"/>game
   <frames>6</frames>
   <imageWidth>156</imageWidth>
   <imageHeight>95</imageHeight>
@@ -113,6 +120,16 @@
   <transparency>false</transparency>
 </ShineSprite>
 -->
+
+<House>
+  <file>assets/house_not_found.png</file>
+  <frames>2</frames>
+  <startLoc x="350" y="780"/>
+  <imageWidth>125</imageWidth>
+  <imageHeight>125</imageHeight>
+  <transparency>false</transparency>
+</House>
+
 <Dog>
   <file>assets/dog_run_left.png</file>
   <bullet>treat</bullet>
