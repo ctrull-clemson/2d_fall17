@@ -51,7 +51,7 @@ Engine::Engine() :
   makeVideo( false ),
   myPlayer(new Player("Dog"))
 {
-  srand( time( NULL ) ); //Randomize spawns, leave off until testing is good.
+  //srand( time( NULL ) ); //Randomize spawns, leave off until testing is good.
   strategies.push_back( new RectangularCollisionStrategy );
 
   // Load in all the houses
@@ -92,7 +92,8 @@ Engine::Engine() :
     x_offset = spacing * (indexLocation % housesPerRow);
     y_offset = spacing * (indexLocation % 3) + Gamedata::getInstance().getXmlInt("House/imageHeight");
 
-    sprites[i]->setPosition(base_x + x_offset, base_y + y_offset);
+    sprites[i]->setCenterPoint(Vector2f(base_x + x_offset, base_y + y_offset));
+    sprites[i]->setPosition(sprites[i]->getCenterPoint());
 
     // Populate "empty house" list, set dog, move from houses
     int index = (rand() % houses.size());

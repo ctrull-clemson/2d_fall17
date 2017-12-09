@@ -17,7 +17,7 @@
 </view>
 
 <game>
-  <dogs>3</dogs>
+  <dogs>1</dogs>
   <houses>14</houses>
   <spacing>75</spacing>
   <startLoc x="50" y="225"/> <!-- First house -->
@@ -139,7 +139,7 @@
 <Dog>
   <file>assets/dog_run_left.png</file>
   <bullet>treat</bullet>
-  <startLoc x="600" y="50"/>
+  <startLoc x="10" y="550"/>
   <frames>6</frames>
   <imageWidth>53</imageWidth>
   <imageHeight>42</imageHeight>
@@ -147,6 +147,7 @@
   <speedX>350</speedX>
   <speedY>0</speedY>
   <safeDistance>150</safeDistance>
+  <runRange>125</runRange>
   <transparency>false</transparency>
   <treatCount>4</treatCount>
 </Dog>

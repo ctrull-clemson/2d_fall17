@@ -11,14 +11,19 @@ public:
 
   virtual void update(Uint32 ticks);
   void setPlayerPos(const Vector2f& p) { playerPos = p; }
+  void setCenterPoint(const Vector2f& p) { centerPoint = p; }
+  const Vector2f& getCenterPoint() const    { return centerPoint; }
 
 private:
-  enum MODE {NORMAL, EVADE};
+  enum MODE {NORMAL, EVADE, ATTRACT};
   Vector2f playerPos;
   int playerWidth;
   int playerHeight;
   MODE currentMode;
   float safeDistance;
+  float runRange;
+
+  Vector2f centerPoint;
 
   void goLeft();
   void goRight();
