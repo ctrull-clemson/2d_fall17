@@ -39,7 +39,7 @@ Engine::Engine() :
   bullet_hud( BulletHUD::getInstance() ),
   renderer( rc->getRenderer() ),
   mountains("back", Gamedata::getInstance().getXmlInt("back/factor") ),
-  road("road", Gamedata::getInstance().getXmlInt("road/factor") ),
+  road("hills", Gamedata::getInstance().getXmlInt("hills/factor") ),
   viewport( Viewport::getInstance() ),
   sprites(std::vector<SmartSprite *> {}),
   strategies(std::vector<CollisionStrategy *> {}),
@@ -51,6 +51,7 @@ Engine::Engine() :
   makeVideo( false ),
   myPlayer(new Player("Dog"))
 {
+  srand( time( NULL ) ); //Randomize spawns, leave off until testing is good.
   strategies.push_back( new RectangularCollisionStrategy );
 
   // Load in all the houses
@@ -71,12 +72,27 @@ Engine::Engine() :
 
   // Load in all dogs
   int dogCount = std::min(Gamedata::getInstance().getXmlInt("game/dogs"), houseCount);
+  std::vector<int> dogLocation;
+  dogLocation.reserve(dogCount);
   for(int i = 0; i < dogCount; i++)
   {
     // Create SmartSprite dog
-    // Need to fix starting location
     sprites.push_back(new SmartSprite("Dog", myPlayer->getPosition(), 256, 123));
     myPlayer->attach( sprites[i] ); // smart sprite knows to avoid player
+
+    // Set position of dog
+    int x_offset, y_offset;
+    int indexLocation = rand() % houseCount;
+
+    // Make sure no other dog is already at the same location
+    while(std::find(dogLocation.begin(), dogLocation.end(), indexLocation) != dogLocation.end())
+    { indexLocation = rand() % houseCount; }
+    dogLocation.push_back(indexLocation);
+
+    x_offset = spacing * (indexLocation % housesPerRow);
+    y_offset = spacing * (indexLocation % 3) + Gamedata::getInstance().getXmlInt("House/imageHeight");
+
+    sprites[i]->setPosition(base_x + x_offset, base_y + y_offset);
 
     // Populate "empty house" list, set dog, move from houses
     int index = (rand() % houses.size());

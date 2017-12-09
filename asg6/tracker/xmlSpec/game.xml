@@ -17,10 +17,10 @@
 </view>
 
 <game>
-  <dogs>4</dogs>
-  <houses>15</houses>
+  <dogs>3</dogs>
+  <houses>14</houses>
   <spacing>75</spacing>
-  <startLoc x="50" y="225"/>
+  <startLoc x="50" y="225"/> <!-- First house -->
 </game>
 
 <world>
@@ -33,6 +33,12 @@
   <factor>2</factor>
   <transparency>false</transparency>
 </back>
+
+<hills>
+  <file>assets/hills.png</file>
+  <factor>1</factor>
+  <transparency>false</transparency>
+</hills>
 
 <road>
   <file>assets/dirt_road.png</file>
@@ -133,14 +139,14 @@
 <Dog>
   <file>assets/dog_run_left.png</file>
   <bullet>treat</bullet>
-  <startLoc x="200" y="360"/>
+  <startLoc x="600" y="50"/>
   <frames>6</frames>
   <imageWidth>53</imageWidth>
   <imageHeight>42</imageHeight>
   <frameInterval>50</frameInterval>
   <speedX>350</speedX>
   <speedY>0</speedY>
-  <safeDistance>275</safeDistance>
+  <safeDistance>150</safeDistance>
   <transparency>false</transparency>
   <treatCount>4</treatCount>
 </Dog>
@@ -155,7 +161,7 @@
   <frameInterval>50</frameInterval>
   <speedX>350</speedX>
   <speedY>0</speedY>
-  <safeDistance>275</safeDistance>
+  <safeDistance>150</safeDistance>
   <transparency>false</transparency>
   <treatCount>4</treatCount>
 </DogRight>
