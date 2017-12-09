@@ -139,7 +139,7 @@
 <Dog>
   <file>assets/dog_run_left.png</file>
   <bullet>treat</bullet>
-  <startLoc x="10" y="550"/>
+  <startLoc x="500" y="550"/>
   <frames>6</frames>
   <imageWidth>53</imageWidth>
   <imageHeight>42</imageHeight>

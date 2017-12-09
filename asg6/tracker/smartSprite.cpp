@@ -17,13 +17,12 @@ void SmartSprite::goLeft()
   {
     centerPoint[0] = std::max(centerPoint[0] - runRange, runRange);
   }
-  /*
-  if(((centerPoint[0] - runRange) < 0) && (getX() < 5))
+  if((getX() < 5) && (std::abs(playerPos[0] - centerPoint[0]) < (safeDistance + runRange)))
   {
     setX(worldWidth-getScaledWidth());
     centerPoint[0] = getX() - (runRange + 1);
   }
-  */
+
   setVelocityX( -abs(getVelocityX()) );
   images = imagesLeft;
 }
@@ -34,15 +33,12 @@ void SmartSprite::goRight()
     centerPoint[0] = std::min(centerPoint[0] + runRange, worldWidth - runRange);
   }
 
-  /*
-  if((getX() > worldWidth - 5) // you are on the far right border
-      && ((centerPoint[0] + runRange) < worldWidth) // player is within the runrange
-    )
+  if((getX() > worldWidth - 5)
+        && (std::abs(playerPos[0] - centerPoint[0]) < (safeDistance + runRange)))
   {
     setX(0);
     centerPoint[0] = runRange + 1;
   }
-  */
 
   setVelocityX( fabs(getVelocityX()));
   images = imagesRight;
