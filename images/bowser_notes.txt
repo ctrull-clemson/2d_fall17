@@ -1,0 +1,2 @@
+walk_up: 59w x 69h. 16 frames
+walk_down: same as up
