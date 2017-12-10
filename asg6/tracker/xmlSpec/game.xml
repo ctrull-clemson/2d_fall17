@@ -138,7 +138,6 @@
 
 <Dog>
   <file>assets/dog_run_left.png</file>
-  <bullet>treat</bullet>
   <startLoc x="500" y="550"/>
   <frames>6</frames>
   <imageWidth>53</imageWidth>
@@ -149,12 +148,10 @@
   <safeDistance>150</safeDistance>
   <runRange>125</runRange>
   <transparency>false</transparency>
-  <treatCount>4</treatCount>
 </Dog>
 
 <DogRight>
   <file>assets/dog_run_right.png</file>
-  <bullet>treat</bullet>
   <startLoc x="50" y="50"/>
   <frames>6</frames>
   <imageWidth>53</imageWidth>
@@ -164,8 +161,63 @@
   <speedY>0</speedY>
   <safeDistance>150</safeDistance>
   <transparency>false</transparency>
-  <treatCount>4</treatCount>
 </DogRight>
+
+<Bowser>
+  <file>assets/bowser_left_walk.png</file>
+  <bullet>treat</bullet>
+  <startLoc x="500" y="550"/>
+  <frames>16</frames>
+  <imageWidth>67</imageWidth>
+  <imageHeight>69</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>300</speedX>
+  <speedY>300</speedY>
+  <transparency>false</transparency>
+  <treatCount>4</treatCount>
+</Bowser>
+
+<BowserRight>
+  <file>assets/bowser_right_walk.png</file>
+  <bullet>treat</bullet>
+  <startLoc x="500" y="550"/>
+  <frames>16</frames>
+  <imageWidth>67</imageWidth>
+  <imageHeight>69</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>300</speedX>
+  <speedY>300</speedY>
+  <transparency>false</transparency>
+  <treatCount>4</treatCount>
+</BowserRight>
+
+<BowserUp>
+  <file>assets/bowser_up_walk.png</file>
+  <bullet>treat</bullet>
+  <startLoc x="500" y="550"/>
+  <frames>16</frames>
+  <imageWidth>59</imageWidth>
+  <imageHeight>69</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>300</speedX>
+  <speedY>300</speedY>
+  <transparency>false</transparency>
+  <treatCount>4</treatCount>
+</BowserUp>
+
+<BowserDown>
+  <file>assets/bowser_down_walk.png</file>
+  <bullet>treat</bullet>
+  <startLoc x="500" y="550"/>
+  <frames>16</frames>
+  <imageWidth>59</imageWidth>
+  <imageHeight>69</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>300</speedX>
+  <speedY>300</speedY>
+  <transparency>false</transparency>
+  <treatCount>4</treatCount>
+</BowserDown>
 
 <treat>
   <file>assets/dog_treat.png</file>
@@ -177,6 +229,7 @@
   <speedY>0</speedY>
   <strategy>rectangular</strategy>
   <transparency>true</transparency>
+  <potency>4</potency>
   <chunk>
     <size>8</size>
     <distance>15</distance>

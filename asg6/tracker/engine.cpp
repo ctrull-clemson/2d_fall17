@@ -49,7 +49,7 @@ Engine::Engine() :
   currentSprite(0),
   collision( false ),
   makeVideo( false ),
-  myPlayer(new Player("Dog"))
+  myPlayer(new Player("Bowser"))
 {
   //srand( time( NULL ) ); //Randomize spawns, leave off until testing is good.
   strategies.push_back( new RectangularCollisionStrategy );
@@ -152,7 +152,7 @@ void Engine::draw() const {
 
 void Engine::update(Uint32 ticks) {
   checkForCollisions();
-  checkForBulletCollisions();
+  checkForBulletCollisions(ticks);
   myPlayer->update(ticks);
   for(auto sprite : sprites)
   {
@@ -181,13 +181,18 @@ void Engine::checkForCollisions() {
   //std::list<Bullet> treats = myPlayer->thrownTreats;
 }
 
-void Engine::checkForBulletCollisions() {
+void Engine::checkForBulletCollisions(Uint32 ticks) {
 
   std::list<Bullet *> treats = myPlayer->thrownTreats;
-  for ( const Drawable* d : sprites ) {
+  for (auto d : sprites ) {
     for(auto t : treats)
     {
       if ( strategies[currentStrategy]->execute(*t, *d) ) {
+        SmartSprite* dog = dynamic_cast<SmartSprite *> (d);
+        if(dog && !(t->explodingNow()))
+        {
+          dog->setSleepTimer(t->getPotency(), ticks);
+        }
         t->explode();
       }
     }

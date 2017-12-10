@@ -1,6 +1,7 @@
 
 #include <algorithm>
 #include "player.h"
+#include "renderContext.h"
 
 Player::Player( const std::string& name) :
   TwoWayMultiSprite(name),
@@ -14,6 +15,8 @@ Player::Player( const std::string& name) :
   maxTreats(Gamedata::getInstance().getXmlInt(name+"/treatCount")),
   timeSinceLastBullet(0),
   facingRight(true),
+  imagesUp( ImageFactory::getInstance().getImages(name + "Up") ),
+  imagesDown( ImageFactory::getInstance().getImages(name + "Down")),
   thrownTreats()
 {
   for(unsigned int i = 0; i < maxTreats; i++)
@@ -34,6 +37,8 @@ Player::Player(const Player& s) :
   maxTreats(s.maxTreats),
   timeSinceLastBullet(s.timeSinceLastBullet),
   facingRight(s.facingRight),
+  imagesUp(s.imagesUp),
+  imagesDown(s.imagesDown),
   thrownTreats(s.thrownTreats)
   { }
 
@@ -73,11 +78,13 @@ void Player::left()  {
 void Player::up()    {
   if ( getY() > 0) {
     setVelocityY( -initialVelocity[1] );
+		images =  imagesUp;
   }
 }
 void Player::down()  {
   if ( getY() < worldHeight-getScaledHeight()) {
     setVelocityY( initialVelocity[1] );
+		images =  imagesDown;
   }
 }
 

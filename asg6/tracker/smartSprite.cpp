@@ -46,6 +46,17 @@ void SmartSprite::goRight()
 void SmartSprite::goUp()    { setVelocityY( -fabs(getVelocityY()) ); }
 void SmartSprite::goDown()  { setVelocityY( fabs(getVelocityY()) );  }
 
+void SmartSprite::updateSleepTimer(unsigned int reduce)
+{
+  if(sleepTimer < reduce)
+  {
+    sleepTimer = 0;
+  }
+  else
+  {
+    sleepTimer =  sleepTimer - reduce;
+  }
+}
 
 SmartSprite::SmartSprite(const std::string& name, const Vector2f& pos,
   int w, int h) :
@@ -56,6 +67,7 @@ SmartSprite::SmartSprite(const std::string& name, const Vector2f& pos,
   currentMode(NORMAL),
   safeDistance(Gamedata::getInstance().getXmlFloat(name+"/safeDistance")),
   runRange(Gamedata::getInstance().getXmlFloat(name+"/runRange")),
+  sleepTimer(0),
   centerPoint(pos)
 {}
 
@@ -67,10 +79,16 @@ SmartSprite::SmartSprite(const SmartSprite& s) :
   currentMode(s.currentMode),
   safeDistance(s.safeDistance),
   runRange(s.runRange),
+  sleepTimer(s.sleepTimer),
   centerPoint(s.centerPoint)
 {}
 
 void SmartSprite::update(Uint32 ticks) {
+  updateSleepTimer(ticks);
+  if(sleepTimer > 0)
+  {
+    return;
+  }
   advanceFrame(ticks);
 
   Vector2f incr = getVelocity() * static_cast<float>(ticks) * 0.001;

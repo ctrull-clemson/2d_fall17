@@ -46,6 +46,9 @@ private:
   float timeSinceLastBullet;
   bool facingRight;
 
+  std::vector<Image *> imagesUp;
+  std::vector<Image *> imagesDown;
+
 protected:
   friend class Engine;
   std::list<Bullet *> thrownTreats;
