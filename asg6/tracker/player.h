@@ -29,6 +29,9 @@ public:
   unsigned int getBulletCount() { return thrownTreats.size(); }
   unsigned int getFreeCount() { return freeTreats.size(); }
   unsigned int getMaxBulletCount() { return maxTreats; }
+  void rescueDog() { dogsRescued += 1; }
+  void returnDog() { dogsRescued -= 1; }
+  int getDogsRescued() const { return dogsRescued; }
 
 protected:
   std::list<SmartSprite*> observers;
@@ -45,6 +48,7 @@ private:
   unsigned int maxTreats;
   float timeSinceLastBullet;
   bool facingRight;
+  int dogsRescued;
 
   std::vector<Image *> imagesUp;
   std::vector<Image *> imagesDown;

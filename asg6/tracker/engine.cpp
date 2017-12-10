@@ -164,13 +164,41 @@ void Engine::update(Uint32 ticks) {
   viewport.update(); // always update viewport last
 }
 
+// Player collision checks only
 void Engine::checkForCollisions() {
   collision = false;
+
+  // Collisions with dogs
   for ( const Drawable* d : sprites ) {
+    if ( strategies[currentStrategy]->execute(*myPlayer, *d) ) {
+      myPlayer->rescueDog();
+      // Add dog to "captured" field for player and remove from map.
+    }
+  }
+
+  // Collisions with terrain
+  // Houses who are not missing a dog
+  for ( const Drawable* d : houses ) {
     if ( strategies[currentStrategy]->execute(*myPlayer, *d) ) {
       collision = true;
     }
   }
+
+  // Houses who are missing a dog
+  for ( House* h : empty_houses ) {
+    if ( strategies[currentStrategy]->execute(*myPlayer, *h) ) {
+      collision = true;
+
+      if(myPlayer->getDogsRescued() > 0)
+      {
+        myPlayer->returnDog();
+        h->setStatus(true); // Tested & confirm does flip the house image
+      }
+
+      // convert to houses container since no longer empy.
+    }
+  }
+
   if ( collision ) {
     myPlayer->collided();
   }

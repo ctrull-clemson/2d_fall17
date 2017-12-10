@@ -15,6 +15,7 @@ Player::Player( const std::string& name) :
   maxTreats(Gamedata::getInstance().getXmlInt(name+"/treatCount")),
   timeSinceLastBullet(0),
   facingRight(true),
+  dogsRescued(0),
   imagesUp( ImageFactory::getInstance().getImages(name + "Up") ),
   imagesDown( ImageFactory::getInstance().getImages(name + "Down")),
   thrownTreats()
@@ -37,6 +38,7 @@ Player::Player(const Player& s) :
   maxTreats(s.maxTreats),
   timeSinceLastBullet(s.timeSinceLastBullet),
   facingRight(s.facingRight),
+  dogsRescued(s.dogsRescued),
   imagesUp(s.imagesUp),
   imagesDown(s.imagesDown),
   thrownTreats(s.thrownTreats)
