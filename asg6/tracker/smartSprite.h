@@ -14,19 +14,24 @@ public:
   void setPlayerPos(const Vector2f& p) { playerPos = p; }
   void setCenterPoint(const Vector2f& p) { centerPoint = p; }
   const Vector2f& getCenterPoint() const    { return centerPoint; }
-  void setSleepTimer(int stime, Uint32 ticks) { sleepTimer = 100 * stime + ticks; }
+  void setSleepTimer(int stime, Uint32 ticks) { sleepTimer = 1000 * stime + ticks; }
 
 private:
   enum MODE {NORMAL, EVADE, ATTRACT};
+  enum DIRECTION {RIGHT, LEFT};
   Vector2f playerPos;
   int playerWidth;
   int playerHeight;
   MODE currentMode;
+  DIRECTION currentDirection;
   float safeDistance;
   float runRange;
   unsigned int sleepTimer;
 
   Vector2f centerPoint;
+
+  std::vector<Image *> imagesIdleRight;
+  std::vector<Image *> imagesIdleLeft;
 
   void goLeft();
   void goRight();

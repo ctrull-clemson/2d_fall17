@@ -163,6 +163,32 @@
   <transparency>false</transparency>
 </DogRight>
 
+<DogIdleLeft>
+  <file>assets/dog_idle_left.png</file>
+  <startLoc x="50" y="950"/>game
+  <frames>4</frames>
+  <imageWidth>52</imageWidth>
+  <imageHeight>45</imageHeight>
+  <frameInterval>300</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>175</safeDistance>
+  <transparency>false</transparency>
+</DogIdleLeft>
+
+<DogIdleRight>
+  <file>assets/dog_idle_right.png</file>
+  <startLoc x="50" y="950"/>game
+  <frames>4</frames>
+  <imageWidth>52</imageWidth>
+  <imageHeight>45</imageHeight>
+  <frameInterval>300</frameInterval>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <safeDistance>175</safeDistance>
+  <transparency>false</transparency>
+</DogIdleRight>
+
 <Bowser>
   <file>assets/bowser_left_walk.png</file>
   <bullet>treat</bullet>

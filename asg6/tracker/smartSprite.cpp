@@ -13,6 +13,7 @@ float distance(float x1, float y1, float x2, float y2) {
 
 void SmartSprite::goLeft()
 {
+  currentDirection = LEFT;
   if(currentMode == EVADE)
   {
     centerPoint[0] = std::max(centerPoint[0] - runRange, runRange);
@@ -28,6 +29,7 @@ void SmartSprite::goLeft()
 }
 void SmartSprite::goRight()
 {
+  currentDirection = RIGHT;
   if(currentMode == EVADE)
   {
     centerPoint[0] = std::min(centerPoint[0] + runRange, worldWidth - runRange);
@@ -65,10 +67,13 @@ SmartSprite::SmartSprite(const std::string& name, const Vector2f& pos,
   playerWidth(w),
   playerHeight(h),
   currentMode(NORMAL),
+  currentDirection(RIGHT),
   safeDistance(Gamedata::getInstance().getXmlFloat(name+"/safeDistance")),
   runRange(Gamedata::getInstance().getXmlFloat(name+"/runRange")),
   sleepTimer(0),
-  centerPoint(pos)
+  centerPoint(pos),
+  imagesIdleRight( ImageFactory::getInstance().getImages(name + "IdleRight") ),
+  imagesIdleLeft( ImageFactory::getInstance().getImages(name + "IdleLeft") )
 {}
 
 SmartSprite::SmartSprite(const SmartSprite& s) :
@@ -77,16 +82,28 @@ SmartSprite::SmartSprite(const SmartSprite& s) :
   playerWidth(s.playerWidth),
   playerHeight(s.playerHeight),
   currentMode(s.currentMode),
+  currentDirection(s.currentDirection),
   safeDistance(s.safeDistance),
   runRange(s.runRange),
   sleepTimer(s.sleepTimer),
-  centerPoint(s.centerPoint)
+  centerPoint(s.centerPoint),
+  imagesIdleRight(s.imagesIdleRight),
+  imagesIdleLeft(s.imagesIdleLeft)
 {}
 
 void SmartSprite::update(Uint32 ticks) {
   updateSleepTimer(ticks);
   if(sleepTimer > 0)
   {
+    if(currentDirection == RIGHT)
+    {
+      images = imagesIdleRight;
+    }
+    else if (currentDirection == LEFT)
+    {
+      images = imagesIdleLeft;
+    }
+    advanceFrame(ticks);
     return;
   }
   advanceFrame(ticks);
