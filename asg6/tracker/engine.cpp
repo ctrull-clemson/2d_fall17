@@ -245,6 +245,25 @@ void Engine::checkForBulletCollisions(Uint32 ticks) {
       ptr++;
     }
   }
+
+  // Bullet collision w/ terrain
+  ptr = (myPlayer->thrownTreats).begin();
+  while(ptr != (myPlayer->thrownTreats).end())
+  {
+    Bullet* b = *ptr;
+    for(auto h : houses)    {
+      if(strategies[currentStrategy]->execute(*h, *b)) {
+        b->stop();
+      }
+    }
+
+    for(auto eh : empty_houses)    {
+      if(strategies[currentStrategy]->execute(*eh, *b)) {
+        b->stop();
+      }
+    }
+    ptr++;
+  }
 }
 
 void Engine::switchSprite(){

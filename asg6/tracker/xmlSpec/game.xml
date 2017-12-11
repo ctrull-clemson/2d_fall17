@@ -19,7 +19,7 @@
 <game>
   <dogs>1</dogs>
   <houses>14</houses>
-  <spacing>75</spacing>
+  <spacing>80</spacing>
   <startLoc x="50" y="195"/> <!-- First house -->
 </game>
 

@@ -26,6 +26,7 @@ public:
   }
   int getPotency() const { return potency; }
   bool explodingNow() const {if (explosion) return true; return false; }
+  void stop();
 
 private:
   float distance;

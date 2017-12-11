@@ -39,10 +39,7 @@ void Bullet::draw() const {
   }
 }
 
-/*
-void Sprite::draw() const {
-  if(getScale() < SCALE_EPSILON) return;
-  if ( explosion ) explosion->draw();
-  else image->draw(getX(), getY(), getScale());
+void Bullet::stop() {
+  setVelocityX(0);
+  setVelocityY(0);
 }
-*/
