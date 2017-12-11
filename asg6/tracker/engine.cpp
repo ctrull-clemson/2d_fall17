@@ -158,15 +158,6 @@ void Engine::update(Uint32 ticks) {
 void Engine::checkForCollisions() {
   collision = false;
 
-  /*
-  std::list<int>::const_iterator ptr = mylist.begin();
-  while ( ptr != mylist.end() ) {
-    std::cout << (*ptr)  << ", ";
-    ++ptr;
-  }
-
-  */
-
   // Collisions with dogs
   std::vector<SmartSprite *>::iterator ptr = sprites.begin();
   while(ptr != sprites.end()) {
@@ -225,7 +216,6 @@ void Engine::checkForCollisions() {
 }
 
 void Engine::checkForBulletCollisions(Uint32 ticks) {
-
   std::list<Bullet *> treats = myPlayer->thrownTreats;
   for (auto d : sprites ) {
     for(auto t : treats)
@@ -238,6 +228,21 @@ void Engine::checkForBulletCollisions(Uint32 ticks) {
         }
         t->explode();
       }
+    }
+  }
+
+  std::list<Bullet *>::iterator ptr = (myPlayer->thrownTreats).begin();
+  while(ptr != (myPlayer->thrownTreats).end())
+  {
+    Bullet* b = *ptr;
+    if(strategies[currentStrategy]->execute(*b, *myPlayer))
+    {
+      myPlayer->moveTreatToFree(b);
+      ptr = (myPlayer->thrownTreats).erase(ptr);
+    }
+    else
+    {
+      ptr++;
     }
   }
 }

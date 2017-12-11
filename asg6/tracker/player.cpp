@@ -150,7 +150,7 @@ void Player::throwTreat(){
   }
   else
   {
-    bullet->setPosition( getPosition() + Vector2f(deltaX, 0) );
+    bullet->setPosition( getPosition() + Vector2f(deltaX + 5, 0) );
     bullet->setVelocity( getVelocity() + Vector2f(minSpeed, 0));
   }
 

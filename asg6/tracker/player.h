@@ -32,6 +32,7 @@ public:
   void rescueDog() { dogsRescued += 1; }
   void returnDog() { dogsRescued -= 1; }
   int getDogsRescued() const { return dogsRescued; }
+  void moveTreatToFree(Bullet * t) { freeTreats.push_back(t); }
 
 protected:
   std::list<SmartSprite*> observers;
