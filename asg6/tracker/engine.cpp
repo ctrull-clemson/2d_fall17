@@ -168,11 +168,27 @@ void Engine::update(Uint32 ticks) {
 void Engine::checkForCollisions() {
   collision = false;
 
+  /*
+  std::list<int>::const_iterator ptr = mylist.begin();
+  while ( ptr != mylist.end() ) {
+    std::cout << (*ptr)  << ", ";
+    ++ptr;
+  }
+
+  */
+
   // Collisions with dogs
-  for ( const Drawable* d : sprites ) {
+  std::vector<SmartSprite *>::iterator ptr = sprites.begin();
+  while(ptr != sprites.end()) {
+    const Drawable * d = *ptr;
     if ( strategies[currentStrategy]->execute(*myPlayer, *d) ) {
+      // Remove dog from the field, increase rescued dog count
+      ptr = sprites.erase(ptr);
       myPlayer->rescueDog();
-      // Add dog to "captured" field for player and remove from map.
+    }
+    else
+    {
+      ptr++;
     }
   }
 
@@ -185,18 +201,26 @@ void Engine::checkForCollisions() {
   }
 
   // Houses who are missing a dog
-  for ( House* h : empty_houses ) {
-    if ( strategies[currentStrategy]->execute(*myPlayer, *h) ) {
+  std::vector<House *>::iterator hptr = empty_houses.begin();
+  while(hptr != empty_houses.end()) {
+    const Drawable * h = *hptr;
+    if ( strategies[currentStrategy]->execute(*myPlayer, *h) )  {
       collision = true;
-
+      // If player has a dog to return, then return it and update house
       if(myPlayer->getDogsRescued() > 0)
       {
+        House * eh = *hptr;
         myPlayer->returnDog();
-        h->setStatus(true); // Tested & confirm does flip the house image
+        eh->setStatus(true); // Tested & confirm does flip the house image
+        houses.push_back(eh);
+        hptr = empty_houses.erase(hptr);
       }
 
-      // convert to houses container since no longer empy.
+      // Unable to return a dog to this house
+      else { hptr++; }
     }
+    // No collision between player and empty house
+    else { hptr++; }
   }
 
   if ( collision ) {
