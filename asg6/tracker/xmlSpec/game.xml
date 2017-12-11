@@ -2,7 +2,7 @@
 <GameData>
 <!-- screenTitle is also used to identify you and your animation.
      So make sure to include your name as part of the screenTitle -->
-<title>The Great Dog Rescue - ctrull</title>
+<title>Bowser's Great Dog Rescue - ctrull</title>
 <maxStringSize>50</maxStringSize>
 
 <frameCapOn>true</frameCapOn>
@@ -196,7 +196,7 @@
 <Bowser>
   <file>assets/bowser_left_walk.png</file>
   <bullet>treat</bullet>
-  <startLoc x="500" y="550"/>
+  <startLoc x="0" y="0"/>
   <frames>16</frames>
   <imageWidth>67</imageWidth>
   <imageHeight>69</imageHeight>

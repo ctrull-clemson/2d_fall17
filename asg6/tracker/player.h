@@ -38,6 +38,8 @@ protected:
   std::list<SmartSprite*> observers;
 
 private:
+  enum DIRECTION {RIGHT, LEFT, UP, DOWN};
+  DIRECTION direct;
   bool collision;
   Vector2f initialVelocity;
 
@@ -48,7 +50,6 @@ private:
   float minSpeed;
   unsigned int maxTreats;
   float timeSinceLastBullet;
-  bool facingRight;
   int dogsRescued;
 
   std::vector<Image *> imagesUp;

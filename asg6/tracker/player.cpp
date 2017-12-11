@@ -6,6 +6,7 @@
 Player::Player( const std::string& name) :
   TwoWayMultiSprite(name),
   observers(std::list<SmartSprite*> {}),
+  direct(RIGHT),
   collision(false),
   initialVelocity(getVelocity()),
   bulletName(Gamedata::getInstance().getXmlStr(name+"/bullet")),
@@ -14,7 +15,6 @@ Player::Player( const std::string& name) :
   minSpeed( Gamedata::getInstance().getXmlInt(bulletName+"/speedX") ),
   maxTreats(Gamedata::getInstance().getXmlInt(name+"/treatCount")),
   timeSinceLastBullet(0),
-  facingRight(true),
   dogsRescued(0),
   imagesUp( ImageFactory::getInstance().getImages(name + "Up") ),
   imagesDown( ImageFactory::getInstance().getImages(name + "Down")),
@@ -37,7 +37,6 @@ Player::Player(const Player& s) :
   minSpeed(s.minSpeed),
   maxTreats(s.maxTreats),
   timeSinceLastBullet(s.timeSinceLastBullet),
-  facingRight(s.facingRight),
   dogsRescued(s.dogsRescued),
   imagesUp(s.imagesUp),
   imagesDown(s.imagesDown),
@@ -68,26 +67,28 @@ void Player::right() {
     setVelocityX(initialVelocity[0]*2);
 		images =  imagesRight;
   }
-  facingRight = true;
+  direct = RIGHT;
 }
 void Player::left()  {
   if ( getX() > 0) {
     setVelocityX(-initialVelocity[0]*2);
     images = imagesLeft;
   }
-  facingRight = false;
+  direct = LEFT;
 }
 void Player::up()    {
   if ( getY() > 0) {
     setVelocityY( -initialVelocity[1] );
 		images =  imagesUp;
   }
+  direct = UP;
 }
 void Player::down()  {
   if ( getY() < worldHeight-getScaledHeight()) {
     setVelocityY( initialVelocity[1] );
 		images =  imagesDown;
   }
+  direct = DOWN;
 }
 
 void Player::update(Uint32 ticks) {
@@ -114,10 +115,19 @@ void Player::update(Uint32 ticks) {
     }
   }
 
-  if ( !collision ) advanceFrame(ticks);
+  advanceFrame(ticks);
+
+  if ( collision )
+  {
+    if(direct == RIGHT) { left(); }
+    else if(direct == LEFT) { right(); }
+    else if(direct == UP) { down(); }
+    else if(direct == DOWN) { up(); }
+  }
 
   Vector2f incr = getVelocity() * static_cast<float>(ticks) * 0.001;
   setPosition(getPosition() + incr);
+
 
   timeSinceLastFrame += ticks;
   timeSinceLastBullet += ticks;
@@ -143,7 +153,7 @@ void Player::throwTreat(){
 
   Bullet* bullet = freeTreats.front();
 
-  if(!facingRight)
+  if(direct == LEFT)
   {
     bullet->setPosition( getPosition() - Vector2f(deltaX, 0) );
     bullet->setVelocity( getVelocity() - Vector2f(minSpeed, 0));
