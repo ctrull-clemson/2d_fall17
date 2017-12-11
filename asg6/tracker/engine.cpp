@@ -37,6 +37,7 @@ Engine::Engine() :
   clock( Clock::getInstance() ),
   hud( HUD::getInstance() ),
   bullet_hud( BulletHUD::getInstance() ),
+  game_hud( GameHUD::getInstance() ),
   renderer( rc->getRenderer() ),
   mountains("back", Gamedata::getInstance().getXmlInt("back/factor") ),
   road("hills", Gamedata::getInstance().getXmlInt("hills/factor") ),
@@ -51,7 +52,7 @@ Engine::Engine() :
   makeVideo( false ),
   myPlayer(new Player("Bowser"))
 {
-  //srand( time( NULL ) ); //Randomize spawns, leave off until testing is good.
+  srand( time( NULL ) ); //Randomize spawns, leave off until testing is good.
   strategies.push_back( new RectangularCollisionStrategy );
 
   // Load in all the houses
@@ -111,21 +112,9 @@ void Engine::draw() const {
   mountains.draw();
   road.draw();
 
-  for(auto h : houses)
-  {
-    h->draw();
-  }
-
-  for(auto h : empty_houses)
-  {
-    h->draw();
-  }
-
-
-  for(auto sprite : sprites)
-  {
-    sprite->draw();
-  }
+  for(auto h : houses) { h->draw(); }
+  for(auto h : empty_houses) { h->draw(); }
+  for(auto sprite : sprites) { sprite->draw(); }
 
   // Likely can remove this once house map is completely implemented
   if ( collision ) {
@@ -139,6 +128,7 @@ void Engine::draw() const {
 
   hud.draw();
   bullet_hud.draw(myPlayer->getFreeCount(), myPlayer->getBulletCount());
+  game_hud.draw(myPlayer->getDogsRescued(), sprites.size(), empty_houses.size());
 
   // Used to make HUD disappear after a few seconds.
   unsigned int timeCheck = clock.getTicks();
@@ -185,6 +175,7 @@ void Engine::checkForCollisions() {
       // Remove dog from the field, increase rescued dog count
       ptr = sprites.erase(ptr);
       myPlayer->rescueDog();
+      delete d;
     }
     else
     {

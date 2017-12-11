@@ -7,6 +7,7 @@
 #include "viewport.h"
 #include "hud.h"
 #include "bullet_hud.h"
+#include "gamestat_hud.h"
 #include "player.h"
 #include "smartSprite.h"
 #include "house.h"
@@ -26,6 +27,7 @@ private:
   Clock& clock;
   HUD& hud;
   BulletHUD& bullet_hud;
+  GameHUD& game_hud;
 
   SDL_Renderer * const renderer;
   World mountains;

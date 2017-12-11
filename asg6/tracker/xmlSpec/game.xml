@@ -20,7 +20,7 @@
   <dogs>1</dogs>
   <houses>14</houses>
   <spacing>75</spacing>
-  <startLoc x="50" y="225"/> <!-- First house -->
+  <startLoc x="50" y="195"/> <!-- First house -->
 </game>
 
 <world>
@@ -56,6 +56,10 @@
   <loc_y>0</loc_y>
 </bullet_hud>
 
+<gamestat_hud>
+  <loc_x>775</loc_x>
+  <loc_y>0</loc_y>
+</gamestat_hud>
 
 <font name="font">
   <file>fonts/arial.ttf</file>
