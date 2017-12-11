@@ -27,7 +27,7 @@ GameHUD::GameHUD() :
   gameStatHeaders.push_back("Empty Houses: ");
 }
 
-void GameHUD::draw(unsigned int rescued, unsigned int remaining, unsigned int houses){
+void GameHUD::draw(const unsigned int timer, unsigned int rescued, unsigned int remaining, unsigned int houses, bool gameFinished){
   int window_w = 225;
   int window_h = (int)(17 + ((gameStatHeaders.size()) * 25));
 
@@ -40,7 +40,14 @@ void GameHUD::draw(unsigned int rescued, unsigned int remaining, unsigned int ho
   SDL_RenderFillRect( renderer, &r2 );
 
   io.writeText(gameStatHeaders[0], (loc_x + 8), (loc_y + 5));
-  io.writeText(gameStatHeaders[1], (loc_x + 8), (loc_y + 25)); // Timer
+  if(gameFinished)
+  {
+    io.writeText(gameStatHeaders[1] + std::to_string((unsigned int) (timer / 1000)), (loc_x + 8), (loc_y + 25), {0,0,255,255}); // Timer
+  }
+  else
+  {
+    io.writeText(gameStatHeaders[1] + std::to_string((unsigned int) (timer / 1000)), (loc_x + 8), (loc_y + 25)); // Timer
+  }
   io.writeText((gameStatHeaders[2] + std::to_string(rescued)), (loc_x + 8), (loc_y + 25 * 2)); // Dogs Rescued
   io.writeText((gameStatHeaders[3] + std::to_string(remaining)), (loc_x + 8), (loc_y + 25 * 3)); // Dogs Remaining
   io.writeText((gameStatHeaders[4] + std::to_string(houses)), (loc_x + 8), (loc_y + 25 * 4)); // Empty Houses Remaining

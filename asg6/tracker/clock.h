@@ -7,6 +7,7 @@ class Clock {
 public:
   static Clock& getInstance();
   unsigned int getTicks() const;
+  unsigned int getStopwatch() const { return timeAtPause - stopWatch; };
 
 private:
   friend class Engine;
@@ -24,6 +25,8 @@ private:
   unsigned int currTicks;
   unsigned int prevTicks;
   unsigned int ticks;
+
+  unsigned int stopWatch;
 
   unsigned int getElapsedTicks();
   void incrFrame();

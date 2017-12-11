@@ -50,6 +50,7 @@ Engine::Engine() :
   currentSprite(0),
   collision( false ),
   makeVideo( false ),
+  gameFinished(false),
   myPlayer(new Player("Bowser"))
 {
   srand( time( NULL ) ); //Randomize spawns, leave off until testing is good.
@@ -126,12 +127,19 @@ void Engine::draw() const {
   viewport.draw();
   viewport.write();
 
+  unsigned int timeCheck = clock.getTicks();
   hud.draw();
   bullet_hud.draw(myPlayer->getFreeCount(), myPlayer->getBulletCount());
-  game_hud.draw(myPlayer->getDogsRescued(), sprites.size(), empty_houses.size());
+  if((empty_houses.size() == 0))
+  {
+    game_hud.draw(finalGameTime, myPlayer->getDogsRescued(), sprites.size(), empty_houses.size(), gameFinished);
+  }
+  else
+  {
+    game_hud.draw(timeCheck, myPlayer->getDogsRescued(), sprites.size(), empty_houses.size(), gameFinished);
+  }
 
   // Used to make HUD disappear after a few seconds.
-  unsigned int timeCheck = clock.getTicks();
   if(timeCheck >= 3000 && timeCheck <= 3020 && !hud.getAlreadyBool())
   {
     hud.setDrawBool(false);
@@ -212,7 +220,14 @@ void Engine::checkForCollisions() {
     myPlayer->missed();
     collision = false;
   }
-  //std::list<Bullet> treats = myPlayer->thrownTreats;
+
+  // Final game time save
+  if(!gameFinished && (empty_houses.size() == 0))
+  {
+    finalGameTime = clock.getTicks();
+    gameFinished = true;
+  }
+
 }
 
 void Engine::checkForBulletCollisions(Uint32 ticks) {

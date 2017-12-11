@@ -42,6 +42,8 @@ private:
   int currentSprite;
   bool collision;
   bool makeVideo;
+  unsigned int finalGameTime;
+  bool gameFinished;
 
   Player* myPlayer;
 

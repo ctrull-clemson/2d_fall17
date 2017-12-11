@@ -8,7 +8,7 @@ class GameHUD {
 public:
   static GameHUD& getInstance();
   ~GameHUD();
-  void draw(unsigned int rescued, unsigned int remaining, unsigned int houses);
+  void draw(const unsigned int timer, unsigned int rescued, unsigned int remaining, unsigned int houses, bool gameFinished);
 
 private:
   std::vector<std::string> gameStatHeaders;
