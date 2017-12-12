@@ -11,6 +11,7 @@
 #include "player.h"
 #include "smartSprite.h"
 #include "house.h"
+#include "sound.h"
 
 class CollisionStrategy;
 
@@ -44,8 +45,10 @@ private:
   bool makeVideo;
   unsigned int finalGameTime;
   bool gameFinished;
+  unsigned int barkTimer;
 
   Player* myPlayer;
+  SDLSound* sound;
 
   void draw() const;
   void update(Uint32);

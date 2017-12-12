@@ -51,7 +51,9 @@ Engine::Engine() :
   collision( false ),
   makeVideo( false ),
   gameFinished(false),
-  myPlayer(new Player("Bowser"))
+  barkTimer(0),
+  myPlayer(new Player("Bowser")),
+  sound(new SDLSound())
 {
   srand( time( NULL ) ); //Randomize spawns, leave off until testing is good.
   strategies.push_back( new RectangularCollisionStrategy );
@@ -160,6 +162,11 @@ void Engine::update(Uint32 ticks) {
   mountains.update();
   road.update();
   viewport.update(); // always update viewport last
+  if(((rand() % 300) == 1) && (clock.getTicks() - barkTimer > 2500) && !gameFinished)
+  {
+    sound->bark();
+    barkTimer = clock.getTicks();
+  }
 }
 
 // Player collision checks only
@@ -191,6 +198,7 @@ void Engine::checkForCollisions() {
   }
 
   // Houses who are missing a dog
+  bool rescuing = false;
   std::vector<House *>::iterator hptr = empty_houses.begin();
   while(hptr != empty_houses.end()) {
     const Drawable * h = *hptr;
@@ -204,6 +212,7 @@ void Engine::checkForCollisions() {
         eh->setStatus(true); // Tested & confirm does flip the house image
         houses.push_back(eh);
         hptr = empty_houses.erase(hptr);
+        rescuing = true;
       }
 
       // Unable to return a dog to this house
@@ -215,6 +224,8 @@ void Engine::checkForCollisions() {
 
   if ( collision ) {
     myPlayer->collided();
+    if(!rescuing) { sound->bump(); }
+    else { sound->door(); }
   }
   else {
     myPlayer->missed();
@@ -226,6 +237,7 @@ void Engine::checkForCollisions() {
   {
     finalGameTime = clock.getTicks();
     gameFinished = true;
+    sound->playVictoryMusic();
   }
 
 }

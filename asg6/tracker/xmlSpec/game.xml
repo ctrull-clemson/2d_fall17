@@ -17,12 +17,20 @@
 </view>
 
 <game>
-  <dogs>1</dogs>
+  <dogs>3</dogs>
   <houses>14</houses>
   <spacing>80</spacing>
   <startLoc x="50" y="195"/> <!-- First house -->
-  <music>assets/music/WhoLetTheDogsOut.mp3</music>
 </game>
+
+<audio>
+  <music>assets/music/WhoLetTheDogsOut.mp3</music>
+  <victory>assets/music/Home.mp3</victory>
+  <bark>assets/music/Bark.wav</bark>
+  <bump>assets/music/Bump.wav</bump>
+  <chew>assets/music/Chew.wav</chew>
+  <door>assets/music/Door.wav</door>
+</audio>
 
 <world>
   <width>1000</width>

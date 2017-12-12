@@ -1,9 +1,10 @@
 #include <vector>
 #include <SDL.h>
 #include <SDL/SDL_mixer.h>
+#include "gamedata.h"
 
 // In this demo, we use Mix_Music *Mix_LoadMUS(const char *file)
-// Where file is the name of the music file to use. 
+// Where file is the name of the music file to use.
 //
 // SDL_mixer supports music and sound samples from the following formats:
 // - WAVE/RIFF (.wav)
@@ -24,11 +25,17 @@ public:
   void startMusic();
   void stopMusic();      // stop all sounds
   void toggleMusic();    // toggle music on/off
+  void playVictoryMusic();      // stop normal song, play victory song
   void operator[](int);  // play the indexed sound
+  void bark() { stopCurrentSound(); setSound(0); }; // Play bark noise
+  void bump() { stopCurrentSound(); setSound(1); }; // Play bump noise
+  void chew() { stopCurrentSound(); setSound(2); }; // Play chew noise
+  void door() { stopCurrentSound(); setSound(2); }; // Play door noise
 private:
   int volume;
   int currentSound;
   Mix_Music *music;
+  Mix_Music *victory;
 
   int audioRate;
   int audioChannels;
@@ -37,5 +44,7 @@ private:
   std::vector<int> channels;
   SDLSound(const SDLSound&);
   SDLSound& operator=(const SDLSound&);
-};
 
+  void stopCurrentSound() { if (currentSound >= 0) Mix_HaltChannel(currentSound); }
+  void setSound(int index);
+};
