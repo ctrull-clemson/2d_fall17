@@ -45,7 +45,7 @@ SDLSound::SDLSound() :
   // get audio files loaded in
   sounds.push_back( Mix_LoadWAV(Gamedata::getInstance().getXmlStr("audio/bark").c_str()) ); // Dog barking sound
   sounds.push_back( Mix_LoadWAV(Gamedata::getInstance().getXmlStr("audio/bump").c_str()) ); // Player/terrain collision
-  //sounds.push_back( Mix_LoadWAV(Gamedata::getInstance().getXmlStr("audio/chew")) ); // Dog when contact with treat
+  sounds.push_back( Mix_LoadWAV(Gamedata::getInstance().getXmlStr("audio/chew").c_str()) ); // Dog when contact with treat
   sounds.push_back( Mix_LoadWAV(Gamedata::getInstance().getXmlStr("audio/door").c_str()) ); // Door closes when dog returned
   for (unsigned int i = 0; i < sounds.size(); ++i) channels.push_back(i);
   std::cout << "Music and Sound is loaded" << std::endl;
@@ -80,5 +80,5 @@ void SDLSound::stopMusic() {
 void SDLSound::playVictoryMusic() {
   stopMusic();
   Mix_VolumeMusic(volume);
-  Mix_PlayMusic(victory, -1);  
+  Mix_PlayMusic(victory, -1);
 }

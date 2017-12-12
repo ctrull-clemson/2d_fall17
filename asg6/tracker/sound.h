@@ -29,8 +29,11 @@ public:
   void operator[](int);  // play the indexed sound
   void bark() { stopCurrentSound(); setSound(0); }; // Play bark noise
   void bump() { stopCurrentSound(); setSound(1); }; // Play bump noise
-  void chew() { stopCurrentSound(); setSound(2); }; // Play chew noise
-  void door() { stopCurrentSound(); setSound(2); }; // Play door noise
+  void chew() {
+    stopCurrentSound();
+    setSound(2);
+  }; // Play chew noise
+  void door() { stopCurrentSound(); setSound(3); }; // Play door noise
 private:
   int volume;
   int currentSound;
@@ -45,6 +48,10 @@ private:
   SDLSound(const SDLSound&);
   SDLSound& operator=(const SDLSound&);
 
-  void stopCurrentSound() { if (currentSound >= 0) Mix_HaltChannel(currentSound); }
+  void stopCurrentSound()
+  {
+    if (currentSound >= 0) Mix_HaltChannel(currentSound);
+    currentSound = -1;
+  }
   void setSound(int index);
 };
