@@ -12,7 +12,7 @@
 <username>ctrull</username>
 
 <world>
-  <width>1100</width>
+  <width>1700</width>
   <height>800</height>
 </world>
 
@@ -22,8 +22,8 @@
 </view>
 
 <game>
-  <dogs>1</dogs>
-  <houses>14</houses>
+  <dogs>12</dogs>
+  <houses>24</houses>
   <spacing>80</spacing>
   <startLoc x="50" y="195"/> <!-- First house -->
 </game>
@@ -39,7 +39,7 @@
 
 <back>
   <file>assets/clouds.png</file>
-  <factor>2</factor>
+  <factor>4</factor>
   <transparency>false</transparency>
 </back>
 
@@ -78,67 +78,6 @@
   <blue>0</blue>
   <alpha>0</alpha>
 </font>
-<!--
-<Dragon>
-  <file>assets/dragon_left.png</file>
-  <startLoc x="700" y="140"/>
-  <frames>4</frames>
-  <imageWidth>96</imageWidth>
-  <imageHeight>100</imageHeight>
-  <frameInterval>50</frameInterval>
-  <speedX>400</speedX>
-  <speedY>125</speedY>
-  <safeDistance>180</safeDistance>
-  <transparency>false</transparency>
-</Dragon>
-
-<DragonRight>
-  <file>assets/dragon_right.png</file>
-  <startLoc x="700" y="140"/>
-  <frames>4</frames>
-  <imageWidth>96</imageWidth>
-  <imageHeight>100</imageHeight>
-  <frameInterval>50</frameInterval>
-  <speedX>400</speedX>
-  <speedY>125</speedY>
-  <safeDistance>180</safeDistance>
-  <transparency>false</transparency>
-</DragonRight>
-
-<Horse>
-  <file>assets/horses_left.png</file>
-  <startLoc x="50" y="950"/>game
-  <frames>6</frames>
-  <imageWidth>156</imageWidth>
-  <imageHeight>95</imageHeight>
-  <frameInterval>50</frameInterval>
-  <speedX>500</speedX>
-  <speedY>0</speedY>
-  <safeDistance>175</safeDistance>
-  <transparency>false</transparency>
-</Horse>
-
-<HorseRight>
-  <file>assets/horses_right.png</file>
-  <startLoc x="50" y="950"/>
-  <frames>6</frames>
-  <imageWidth>156</imageWidth>
-  <imageHeight>95</imageHeight>
-  <frameInterval>50</frameInterval>
-  <speedX>500</speedX>
-  <speedY>0</speedY>
-  <safeDistance>175</safeDistance>
-  <transparency>false</transparency>
-</HorseRight>
-
-<ShineSprite>
-  <file>assets/shine_sprite.png</file>
-  <startLoc x="100" y="800"/>
-  <speedX>0</speedX>
-  <speedY>0</speedY>
-  <transparency>false</transparency>
-</ShineSprite>
--->
 
 <House>
   <file>assets/houses2.png</file>
@@ -205,7 +144,7 @@
 <Bowser>
   <file>assets/bowser_left_walk.png</file>
   <bullet>treat</bullet>
-  <startLoc x="0" y="0"/>
+  <startLoc x="900" y="525"/>
   <frames>16</frames>
   <imageWidth>67</imageWidth>
   <imageHeight>69</imageHeight>

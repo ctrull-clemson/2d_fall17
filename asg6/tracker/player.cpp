@@ -156,12 +156,12 @@ void Player::throwTreat(){
   if(direct == LEFT)
   {
     bullet->setPosition( getPosition() - Vector2f(deltaX, 0) );
-    bullet->setVelocity( getVelocity() - Vector2f(minSpeed, 0));
+    bullet->setVelocity( (getVelocity() - Vector2f(minSpeed, 0)) * 2);
   }
   else
   {
     bullet->setPosition( getPosition() + Vector2f(deltaX + 5, 0) );
-    bullet->setVelocity( getVelocity() + Vector2f(minSpeed, 0));
+    bullet->setVelocity( (getVelocity() + Vector2f(minSpeed, 0)) * 2);
   }
 
   thrownTreats.push_back( bullet );
