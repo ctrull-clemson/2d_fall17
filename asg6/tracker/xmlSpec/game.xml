@@ -141,7 +141,7 @@
 -->
 
 <House>
-  <file>assets/houses.png</file>
+  <file>assets/houses2.png</file>
   <frames>2</frames>
   <startLoc x="350" y="780"/>
   <imageWidth>125</imageWidth>
