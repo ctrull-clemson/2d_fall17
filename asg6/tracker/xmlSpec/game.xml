@@ -21,6 +21,7 @@
   <houses>14</houses>
   <spacing>80</spacing>
   <startLoc x="50" y="195"/> <!-- First house -->
+  <music>assets/music/WhoLetTheDogsOut.mp3</music>
 </game>
 
 <world>
