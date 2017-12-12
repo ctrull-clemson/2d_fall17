@@ -35,8 +35,7 @@ void Viewport::write() const {
 
   strm.str("");
   strm << "Christian Trull";
-  IOmod::getInstance().
-    writeText(strm.str(), 20, 450, {255,0,255,255});
+  IOmod::getInstance().writeText(strm.str(), 20, 450, {255,0,255,255});
 }
 
 void Viewport::update() {

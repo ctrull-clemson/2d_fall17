@@ -11,13 +11,18 @@
 <maxFrames>300</maxFrames>
 <username>ctrull</username>
 
+<world>
+  <width>1100</width>
+  <height>800</height>
+</world>
+
 <view>
   <width>1000</width>
   <height>800</height>
 </view>
 
 <game>
-  <dogs>3</dogs>
+  <dogs>1</dogs>
   <houses>14</houses>
   <spacing>80</spacing>
   <startLoc x="50" y="195"/> <!-- First house -->
@@ -31,11 +36,6 @@
   <chew>assets/music/Chew.wav</chew>
   <door>assets/music/Door.wav</door>
 </audio>
-
-<world>
-  <width>1000</width>
-  <height>800</height>
-</world>
 
 <back>
   <file>assets/rock_bg.png</file>
@@ -156,7 +156,7 @@
   <imageWidth>53</imageWidth>
   <imageHeight>42</imageHeight>
   <frameInterval>50</frameInterval>
-  <speedX>350</speedX>
+  <speedX>450</speedX>
   <speedY>0</speedY>
   <safeDistance>150</safeDistance>
   <runRange>125</runRange>
@@ -210,8 +210,8 @@
   <imageWidth>67</imageWidth>
   <imageHeight>69</imageHeight>
   <frameInterval>50</frameInterval>
-  <speedX>300</speedX>
-  <speedY>300</speedY>
+  <speedX>200</speedX>
+  <speedY>200</speedY>
   <transparency>false</transparency>
   <treatCount>4</treatCount>
 </Bowser>

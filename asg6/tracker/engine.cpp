@@ -119,15 +119,16 @@ void Engine::draw() const {
   for(auto h : empty_houses) { h->draw(); }
   for(auto sprite : sprites) { sprite->draw(); }
 
-  // Likely can remove this once house map is completely implemented
-  if ( collision ) {
-    IOmod::getInstance().writeText("Oops: Collision", 500, 90);
-  }
-
   myPlayer->draw();
 
   viewport.draw();
-  viewport.write();
+
+  // Game finished printing
+  if ( gameFinished ) {
+    IOmod::getInstance().writeText("You Win!!!", 500, 350);
+    IOmod::getInstance().writeText("In Loving Memory of Smokey, 2003 - 2017", 0, 0);
+  }
+
 
   unsigned int timeCheck = clock.getTicks();
   hud.draw();
@@ -181,7 +182,7 @@ void Engine::checkForCollisions() {
       // Remove dog from the field, increase rescued dog count
       ptr = sprites.erase(ptr);
       myPlayer->rescueDog();
-      delete d;
+      //delete d;
     }
     else
     {
@@ -340,21 +341,22 @@ void Engine::play() {
         }
       }
 
-      if ( keystate[SDL_SCANCODE_W] ) {
-        myPlayer->up();
-      }
-      if ( keystate[SDL_SCANCODE_A] ) {
-        myPlayer->left();
-      }
-      if ( keystate[SDL_SCANCODE_S] ) {
-        myPlayer->down();
-      }
-      if ( keystate[SDL_SCANCODE_D] ) {
-        myPlayer->right();
-      }
-      if ( keystate[SDL_SCANCODE_SPACE]){
-        myPlayer->throwTreat();
-      }
+    }
+
+    if ( keystate[SDL_SCANCODE_W] ) {
+      myPlayer->up();
+    }
+    if ( keystate[SDL_SCANCODE_A] ) {
+      myPlayer->left();
+    }
+    if ( keystate[SDL_SCANCODE_S] ) {
+      myPlayer->down();
+    }
+    if ( keystate[SDL_SCANCODE_D] ) {
+      myPlayer->right();
+    }
+    if ( keystate[SDL_SCANCODE_SPACE]){
+      myPlayer->throwTreat();
     }
 
     // In this section of the event loop we allow key bounce:
