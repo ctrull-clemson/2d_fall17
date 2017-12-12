@@ -42,11 +42,13 @@ void GameHUD::draw(const unsigned int timer, unsigned int rescued, unsigned int 
   io.writeText(gameStatHeaders[0], (loc_x + 8), (loc_y + 5));
   if(gameFinished)
   {
-    io.writeText(gameStatHeaders[1] + std::to_string((unsigned int) (timer / 1000)), (loc_x + 8), (loc_y + 25), {0,0,255,255}); // Timer
+    unsigned int remainder = (timer - ((timer / 1000) * 1000)) / 100;
+    io.writeText(gameStatHeaders[1] + std::to_string((unsigned int) (timer / 1000)) + "." + std::to_string(remainder), (loc_x + 8), (loc_y + 25), {0,0,255,255}); // Timer
   }
   else
   {
-    io.writeText(gameStatHeaders[1] + std::to_string((unsigned int) (timer / 1000)), (loc_x + 8), (loc_y + 25)); // Timer
+    unsigned int remainder = (timer - ((timer / 1000) * 1000)) / 100;
+    io.writeText(gameStatHeaders[1] + std::to_string((unsigned int) (timer / 1000)) + "." + std::to_string(remainder), (loc_x + 8), (loc_y + 25)); // Timer
   }
   io.writeText((gameStatHeaders[2] + std::to_string(rescued)), (loc_x + 8), (loc_y + 25 * 2)); // Dogs Rescued
   io.writeText((gameStatHeaders[3] + std::to_string(remaining)), (loc_x + 8), (loc_y + 25 * 3)); // Dogs Remaining

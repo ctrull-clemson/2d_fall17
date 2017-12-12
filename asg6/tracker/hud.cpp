@@ -24,6 +24,7 @@ HUD::HUD() :
   hud_messages.push_back("- space to shot");
   hud_messages.push_back("- f1 for HUD");
   hud_messages.push_back("- f2 for Bullet HUD");
+  hud_messages.push_back("- g for God Mode");
 }
 
 void HUD::draw(){
