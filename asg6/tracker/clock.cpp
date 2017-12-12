@@ -19,7 +19,7 @@ Clock::Clock() :
   frames(0),
   timeAtStart(0),
   timeAtPause(0),
-  currTicks(0), prevTicks(0), ticks(0)
+  currTicks(0), prevTicks(0), ticks(0), stopWatch(0)
   {
   startClock();
 }
@@ -31,7 +31,7 @@ Clock::Clock(const Clock& c) :
   PERIOD(c.PERIOD),
   frames(c.frames),
   timeAtStart(c.timeAtStart), timeAtPause(c.timeAtPause),
-  currTicks(c.currTicks), prevTicks(c.prevTicks), ticks(c.ticks)
+  currTicks(c.currTicks), prevTicks(c.prevTicks), ticks(c.ticks), stopWatch(c.stopWatch)
   {
   startClock();
 }

@@ -51,6 +51,8 @@ void House::draw() const {
 }
 
 void House::update(Uint32 ticks) {
+  Uint32 value = ticks;
+  value++;
 /*
   Vector2f incr = getVelocity() * static_cast<float>(ticks) * 0.001;
   setPosition(getPosition() + incr);

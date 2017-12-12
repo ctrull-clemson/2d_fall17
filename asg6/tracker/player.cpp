@@ -29,6 +29,7 @@ Player::Player( const std::string& name) :
 Player::Player(const Player& s) :
   TwoWayMultiSprite(s),
   observers(std::list<SmartSprite*> {}),
+  direct (s.direct),
   collision(s.collision),
   initialVelocity(s.getVelocity()),
   bulletName(s.bulletName),

@@ -50,6 +50,7 @@ Engine::Engine() :
   currentSprite(0),
   collision( false ),
   makeVideo( false ),
+  finalGameTime(0),
   gameFinished(false),
   barkTimer(0),
   myPlayer(new Player("Bowser")),
@@ -127,7 +128,7 @@ void Engine::draw() const {
   // Game finished printing
   if ( gameFinished ) {
     IOmod::getInstance().writeText("You Win!!!", 500, 350);
-    IOmod::getInstance().writeText("In Loving Memory of Smokey, 2003 - 2017", 0, 150, {0,0,0,255});
+    //IOmod::getInstance().writeText("In Loving Memory of Smokey, 2003 - 2017", 0, 150, {0,0,0,255});
   }
 
 
