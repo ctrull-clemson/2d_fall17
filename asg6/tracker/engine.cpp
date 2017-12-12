@@ -126,7 +126,7 @@ void Engine::draw() const {
   // Game finished printing
   if ( gameFinished ) {
     IOmod::getInstance().writeText("You Win!!!", 500, 350);
-    IOmod::getInstance().writeText("In Loving Memory of Smokey, 2003 - 2017", 0, 0);
+    IOmod::getInstance().writeText("In Loving Memory of Smokey, 2003 - 2017", 0, 0, {0,0,0,255});
   }
 
 
