@@ -53,7 +53,8 @@ Engine::Engine() :
   gameFinished(false),
   barkTimer(0),
   myPlayer(new Player("Bowser")),
-  sound(new SDLSound())
+  sound(new SDLSound()),
+  godMode(false)
 {
   srand( time( NULL ) ); //Randomize spawns, leave off until testing is good.
   strategies.push_back( new RectangularCollisionStrategy );
@@ -126,7 +127,7 @@ void Engine::draw() const {
   // Game finished printing
   if ( gameFinished ) {
     IOmod::getInstance().writeText("You Win!!!", 500, 350);
-    IOmod::getInstance().writeText("In Loving Memory of Smokey, 2003 - 2017", 0, 0, {0,0,0,255});
+    IOmod::getInstance().writeText("In Loving Memory of Smokey, 2003 - 2017", 0, 150, {0,0,0,255});
   }
 
 
@@ -155,9 +156,12 @@ void Engine::update(Uint32 ticks) {
   checkForCollisions();
   checkForBulletCollisions(ticks);
   myPlayer->update(ticks);
-  for(auto sprite : sprites)
+  if(!godMode)
   {
-    sprite->update(ticks);
+    for(auto sprite : sprites)
+    {
+      sprite->update(ticks);
+    }
   }
 
   mountains.update();
@@ -334,6 +338,9 @@ void Engine::play() {
         if (keystate[SDL_SCANCODE_F4] && !makeVideo) {
           std::cout << "Initiating frame capture" << std::endl;
           makeVideo = true;
+        }
+        if (keystate[SDL_SCANCODE_G]) {
+          godMode = !godMode;
         }
         else if (keystate[SDL_SCANCODE_F4] && makeVideo) {
           std::cout << "Terminating frame capture" << std::endl;

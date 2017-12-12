@@ -49,6 +49,7 @@ private:
 
   Player* myPlayer;
   SDLSound* sound;
+  bool godMode;
 
   void draw() const;
   void update(Uint32);
