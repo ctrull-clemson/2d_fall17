@@ -340,17 +340,16 @@ void Engine::play() {
           std::cout << "Initiating frame capture" << std::endl;
           makeVideo = true;
         }
-        if (keystate[SDL_SCANCODE_G]) {
-          godMode = !godMode;
-        }
         else if (keystate[SDL_SCANCODE_F4] && makeVideo) {
           std::cout << "Terminating frame capture" << std::endl;
           makeVideo = false;
         }
+        if (keystate[SDL_SCANCODE_G]) {
+          godMode = !godMode;
+        }
       }
-
     }
-
+    // In this section of the event loop we allow key bounce:
     if ( keystate[SDL_SCANCODE_W] ) {
       myPlayer->up();
     }
@@ -367,7 +366,6 @@ void Engine::play() {
       myPlayer->throwTreat();
     }
 
-    // In this section of the event loop we allow key bounce:
 
     ticks = clock.getElapsedTicks();
     if ( ticks > 0 ) {
