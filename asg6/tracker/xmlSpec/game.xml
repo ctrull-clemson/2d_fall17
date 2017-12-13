@@ -8,7 +8,7 @@
 <frameCapOn>true</frameCapOn>
 <period>17</period>
 
-<maxFrames>300</maxFrames>
+<maxFrames>600</maxFrames>
 <username>ctrull</username>
 
 <world>
@@ -22,8 +22,8 @@
 </view>
 
 <game>
-  <dogs>12</dogs>
-  <houses>24</houses>
+  <dogs>4</dogs>
+  <houses>17</houses>
   <spacing>80</spacing>
   <startLoc x="50" y="195"/> <!-- First house -->
 </game>

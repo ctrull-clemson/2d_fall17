@@ -8,45 +8,65 @@ Clemson Email Address:
   ctrull@g.clemson.edu
 
 Project no:
-  #5
+  #6
 
 Project due date:
-  Sunday December 3, 2017
+  Wednesday December 13, 2017
 
 Project description:
-  Created a Bullet HUD to go along with the original HUD from the last deliverable.
-    Displays the free/thrown treat count. Treats can sit "on the ground" until a
-    collision so thrown treats can last in the list for quite some time unlike
-    a bullet might.
+  Final deliverable for the course.
 
-  Implemented projectiles (throwing treats) for the player class. I do need to
-    update the player sprite as I just re-used the same sprite as the sprite I
-    will be using for my smart sprites. Collision detection for treats and
-    smart sprites is implemented. Currently my method for doing collision
-    detection is not following OO standards, but I plan to fix this for the final
-    deliverable by implementing a sprite manager to let me follow these standards
-    more cleanly.
+  Since the last deliverable I have added unit
+    collision between the player and the terrain/projectiles/smart sprites, with
+    collisions between smart sprites and projectiles being kept from last time.
 
-  On collision for treats and smart sprites, the smart sprite will explode. I do
-    want to improve on the explosion as chunking doesn't look as good as I would
-    like. After exploding the treat gets moved from the thrown treat list to
-    the free list.
+  The background and parallax layer have both been changed to new images. The
+    foreground is quite large so the effect is not great but is noticeable.
+
+  On game start the engine will create the grid of houses and the dogs to be
+    rescued. It also randomly determines the "empty" houses that have blue
+    lights instead of a yellow light. If the player collides with a blue window
+    house after having rescued a dog it will decrement the saved dog count and
+    flip the house.
+
+  Background/Victory music has been added, and some game sound effects occur
+    either when a requirement has been reached (bumping into a wall, returning
+    a dog to its home, etc) or at a random time (dogs barking in the background).
+
+  A third HUD, the game stat HUD, is located in the top right with information
+    about how the player is doing in the game.
+
+Game Goals:
+  The goal of the game is for the player (Bowser) to help rescue all of the dogs
+    that have managed to escape and are running around in the streets. You must
+    make contact with the dog to "rescue" them, and then once you have rescued
+    them you need to bring them back to an "empty" home (blue window, open gate).
+    Your goal is to rescue the dogs in as fast a time as possible. The timer is
+    located in the top right game stat HUD. Once all dogs are rescued the timer
+    is stopped and turns blue.
 
 The easiest part of this project:
-    Most aspects where fairly straight forward thanks to the examples. The bullet
-    HUD was really easy since i could reuse the previous HUD from the last
-    deliverable.
+  Most of this deliverable was fairly straightforward. Some of the audio effects
+    gave me trouble at first, but I think most of them have been straightened
+    out now. I haven noticed a significant increase in crashes after adding
+    sound, but it does not happen too often.
 
 Problems that I had in completing this project:
-    My biggest issue with this deliverable was that I did not manage my time very
-    well with this project and other classes so I needed to push it back into
-    the 3 day grace period. My code also really needs to be reformatted to
-    follow OO standards better. A sprite manager would really help, and having
-    classes inherit from Drawable would be much cleaner and easier to understand.
+  Nothing was extremely difficult, but there were problems with a few things.
+    For audio I would sometimes crash when it would play a sound, but then then
+    next time I run it I could have it happen 50 times safely. Recreating them
+    in GDB was much more difficult too.
+
+  Some of my player movements do still feel pretty shaky/could be improved on.
+    Currently if a player bumps into an immobile object they just get told to go
+    back the opposite direction. While it works, it does sometimes lead to
+    interesting situations (if you get stuck on the far left between the border
+    of the world and a house, the controls sometimes invert until you escape).
 
 Sprite Resources:
   horses: http://spritedatabase.net/file/20905
   black_dragon: https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjXi7TImuDWAhXLZiYKHYOJB0UQjhwIBQ&url=http%3A%2F%2Fwww.gdunlimited.net%2Fforums%2Ftopic%2F9493-dragon-sprites%2F&psig=AOvVaw33czvpLjIX1Bnhq2jzlDyY&ust=1507523878015078
   rock 4: https://opengameart.org/sites/default/files/rock_4.png
   dog: https://www.spriters-resource.com/pc_computer/mnmvii/sheet/43211/
-  running dog: https://dribbble.com/shots/1925402-Game-Character-Sprite-11
+  chewing: https://freesound.org/people/InspectorJ/sounds/412068/
+  clouds: https://www.dreamstime.com/stock-illustration-d-chocolate-hills-clouds-mountains-background-image53651506
